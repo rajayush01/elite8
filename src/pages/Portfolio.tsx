@@ -2,17 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img1 from '../assets/img1.avif';
-import img from '@/assets/try.jpg'
+import img from '@/assets/try.jpg';
 import PortfolioMobile from './PortfolioMobile';
 import StatsSection from '@/components/layout/StatSection';
-import img10 from '@/assets/bharatonesty.png'
-import img2 from '@/assets/doctor.png'
-import img3 from '@/assets/lets.png'
-import img4 from '@/assets/ib1.png'
-import img5 from '@/assets/nymara1.png'
-import img8 from '@/assets/temple1.png'
-import img7 from '@/assets/milk.png'
-import img9 from '@/assets/photography.png'
+import img10 from '@/assets/bharatonesty.png';
+import img2 from '@/assets/doctor.png';
+import img3 from '@/assets/lets.png';
+import img4 from '@/assets/ib1.png';
+import img5 from '@/assets/nymara1.png';
+import img8 from '@/assets/temple1.png';
+import img7 from '@/assets/milk.png';
+import img9 from '@/assets/photography.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -182,61 +182,68 @@ export default function HorizontalScrollSnap() {
 		{
 			category: 'BRANDING / IDENTITY',
 			title: 'Bharat Honesty',
-			description: 'A comprehensive branding initiative for Bharat Honesty, focusing on trust and transparency. We developed a modern identity system that communicates integrity while maintaining cultural relevance.',
+			description:
+				'A comprehensive branding initiative for Bharat Honesty, focusing on trust and transparency. We developed a modern identity system that communicates integrity while maintaining cultural relevance.',
 			image: img10,
-			color: '#1a1a2e'
+			color: '#1a1a2e',
 		},
 		{
 			category: 'HEALTHCARE / DIGITAL',
-			title: 'Medical Excellence',
-			description: 'Revolutionizing healthcare communication through strategic digital transformation. We created an approachable yet professional brand that bridges the gap between medical expertise and patient care.',
+			title: 'Dr. Vikas Bhalekar',
+			description:
+				'Revolutionizing healthcare communication through strategic digital transformation. We created an approachable yet professional brand that bridges the gap between medical expertise and patient care.',
 			image: img2,
-			color: '#0f3460'
+			color: '#0f3460',
 		},
 		{
 			category: 'EVENT / EXPERIENCE',
-			title: 'Let\'s Connect',
-			description: 'Building meaningful connections through immersive event experiences. Our strategy focused on creating memorable touchpoints that transform attendees into brand advocates.',
+			title: "Let's Taxify",
+			description:
+				'Building meaningful connections through immersive event experiences. Our strategy focused on creating memorable touchpoints that transform attendees into brand advocates.',
 			image: img3,
-			color: '#16213e'
+			color: '#16213e',
 		},
 		{
 			category: 'TECHNOLOGY / INNOVATION',
-			title: 'IB Solutions',
-			description: 'Empowering businesses through cutting-edge technology solutions. We positioned IB as a forward-thinking partner that simplifies complex technical challenges with elegant solutions.',
+			title: 'IB Technology',
+			description:
+				'Empowering businesses through cutting-edge technology solutions. We positioned IB as a forward-thinking partner that simplifies complex technical challenges with elegant solutions.',
 			image: img4,
-			color: '#1a1a2e'
+			color: '#1a1a2e',
 		},
 		{
 			category: 'LUXURY / LIFESTYLE',
-			title: 'Nymara Collection',
-			description: 'Crafting an exclusive luxury experience for Nymara. We developed a sophisticated brand language that speaks to discerning customers who appreciate timeless elegance and exceptional quality.',
+			title: 'Nymara',
+			description:
+				'Crafting an exclusive luxury experience for Nymara. We developed a sophisticated brand language that speaks to discerning customers who appreciate timeless elegance and exceptional quality.',
 			image: img5,
-			color: '#2d4059'
+			color: '#2d4059',
 		},
 		{
 			category: 'CREATIVE / PHOTOGRAPHY',
-			title: 'Visual Stories',
-			description: 'Elevating visual storytelling through innovative photography platforms. We created a digital ecosystem that showcases artistic vision while providing seamless client experiences.',
+			title: 'Reclipse',
+			description:
+				'Elevating visual storytelling through innovative photography platforms. We created a digital ecosystem that showcases artistic vision while providing seamless client experiences.',
 			image: img9,
-			color: '#1a1a2e'
+			color: '#1a1a2e',
 		},
 		{
 			category: 'HERITAGE / CULTURE',
-			title: 'Temple Restoration',
-			description: 'Preserving cultural heritage through thoughtful restoration and modern documentation. Our approach balanced traditional values with contemporary presentation methods.',
+			title: 'Nashville Temple',
+			description:
+				'Preserving cultural heritage through thoughtful restoration and modern documentation. Our approach balanced traditional values with contemporary presentation methods.',
 			image: img8,
-			color: '#0f3460'
+			color: '#0f3460',
 		},
 		{
 			category: 'FOOD & BEVERAGE',
-			title: 'Artisan Dairy',
-			description: 'Reimagining traditional dairy products for modern consumers. We developed a farm-to-table narrative that emphasizes quality, sustainability, and authentic craftsmanship.',
+			title: 'Vyshnavi',
+			description:
+				'Reimagining traditional dairy products for modern consumers. We developed a farm-to-table narrative that emphasizes quality, sustainability, and authentic craftsmanship.',
 			image: img7,
-			color: '#16213e'
-		}
+			color: '#16213e',
+		},
 	];
-
 
 	// Render mobile component for small screens
 	if (isMobile) {
@@ -248,7 +255,7 @@ export default function HorizontalScrollSnap() {
 			<div ref={containerRef} className="w-[600%] flex flex-nowrap bg-black">
 				{/* Hero Section */}
 				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 bg-black">
-					<div className="max-w-4xl mt-44">
+					<div className="max-w-4xl mt-44 ml-28">
 						<h1 className="text-5xl md:text-8xl mb-8">
 							<span className="font-serif">Let's create</span>
 							<br />
@@ -284,11 +291,12 @@ export default function HorizontalScrollSnap() {
 
 				{/* Our Projects Section */}
 				<section className="panel w-full h-screen flex justify-start items-center font-semibold text-2xl text-center text-white relative box-border -left-28">
-					<div className="flex flex-row justify-center items-center">
+					<div className="flex flex-row justify-center items-center ml-40">
 						<div className="relative">
 							<img src={img1} alt="Project showcase" className="h-[800px] object-cover" />
-							<div className="our-projects-text absolute top-1/2 -translate-y-1/2 -right-[800px] text-[150px] font-bold font-serif">
-								Our Projects
+							<div className="our-projects-text absolute top-1/2 -translate-y-1/2 -right-[300px] text-8xl font-bold font-serif flex flex-col justify-center item-center">
+								<div>Our</div>
+								<div>Projects</div>
 							</div>
 						</div>
 					</div>
@@ -301,14 +309,14 @@ export default function HorizontalScrollSnap() {
 						className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5"
 					>
 						<div className="flex flex-row justify-center items-center min-h-screen ">
-							<div className="flex flex-row items-center max-w-7xl relative">
-								<div className="w-1/2">
-									<img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
-								</div>
-
-								<div className="w-1/2 bg-black p-16 flex flex-col justify-center -ml-32 relative z-10">
-									<div className="animate-slide text-sm text-gray-500 tracking-wider mb-8">
-										{project.category}
+							<div className="flex flex-row items-center relative ml-80">
+								<div className=" bg-black p-16 flex flex-col justify-center -ml-32 relative z-10">
+									<div className="flex flex-col justify-center item-center w-full">
+										<img
+											src={project.image}
+											alt={project.title}
+											className="w-full h-auto object-cover rounded-lg"
+										/>
 									</div>
 
 									<h1 className="animate-slide text-7xl font-serif mb-8 leading-tight">
