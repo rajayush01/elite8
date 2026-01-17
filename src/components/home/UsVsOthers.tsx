@@ -187,7 +187,7 @@ export default function UsVsOthers() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-950 text-white py-20 px-4 overflow-hidden">
+    <section className="min-h-screen text-white py-20 px-4 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-24 left-1/3 w-96 h-96 bg-purple-600/20 blur-[120px]" />
@@ -283,7 +283,7 @@ export default function UsVsOthers() {
 
         {/* CTA */}
         <div className="text-center mt-20">
-          <button className="relative px-12 py-5 rounded-full font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:scale-110 transition shadow-[0_0_60px_rgba(168,85,247,0.6)]">
+          <button className="relative px-12 py-5 rounded-full font-bold text-lg bg-gradient-to-r from-purple-600 to-purple-600 hover:scale-110 transition shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all duration-300">
             <span className="flex items-center gap-3">
               <Sparkles className="w-5 h-5" />
               Get Started Today

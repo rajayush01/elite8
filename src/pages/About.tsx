@@ -34,59 +34,33 @@ export default function AboutPage() {
   }, []);
 
   const stats = [
-    { number: '150+', label: 'Projects Delivered', icon: Award },
-    { number: '50+', label: 'Happy Clients', icon: Users },
-    { number: '8+', label: 'Years Experience', icon: TrendingUp },
-    { number: '98%', label: 'Client Satisfaction', icon: Heart }
+    { number: '10+', label: 'Team Members', icon: Users, description: 'Talented designers, developers, and strategists.' },
+    { number: '3+', label: 'Years of Experience', icon: TrendingUp, description: 'Creating exceptional digital experiences.' },
+    { number: '100%', label: 'Clients Satisfaction', icon: Heart, description: 'Trusted by businesses around the world.' },
+    { number: '98%', label: 'Client Repetition', icon: Award, description: 'Successful client repetition worldwide.' },
+
   ];
 
   const values = [
     {
-      icon: Target,
-      title: 'Excellence',
-      description: 'We strive for perfection in every pixel, every line of code, and every client interaction.'
-    },
-    {
       icon: Zap,
       title: 'Innovation',
-      description: 'Staying ahead of trends and leveraging cutting-edge technologies to deliver exceptional results.'
+      description: 'We embrace new technologies and methodologies to push the boundaries of what\'s possible in digital design and development.'
+    },
+    {
+      icon: Target,
+      title: 'Excellence',
+      description: 'We strive for excellence in everything we do, from the smallest detail to the overall user experience.'
     },
     {
       icon: Users,
       title: 'Collaboration',
-      description: 'Working closely with clients as partners to understand their vision and bring it to life.'
+      description: 'We believe in the power of collaboration, both within our team and with our clients, to create exceptional results.'
     },
     {
       icon: Heart,
-      title: 'Integrity',
-      description: 'Transparent communication, honest feedback, and ethical practices in everything we do.'
-    }
-  ];
-
-  const team = [
-    {
-      name: 'Sarah Johnson',
-      role: 'CEO & Founder',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
-      specialty: 'Digital Strategy'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Creative Director',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-      specialty: 'Brand Design'
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Lead Developer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
-      specialty: 'Full Stack Development'
-    },
-    {
-      name: 'David Kim',
-      role: 'Marketing Strategist',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
-      specialty: 'Digital Marketing'
+      title: 'User-Centered',
+      description: 'We put users at the center of our design process, creating experiences that are intuitive, engaging, and effective.'
     }
   ];
 
@@ -172,18 +146,13 @@ export default function AboutPage() {
           <div className="text-center mb-12 sm:mb-16">
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 relative px-2 mt-10">
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent inline-block animate-pulse">
-                Crafting Digital
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block">
-                Excellence
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent inline-block">
+                About Us
               </span>
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
-              We're not just a digital agency—we're your partners in innovation, 
-              transforming visions into powerful digital experiences.
+              We bring imagination to life with modern design, smart code, and lasting impact.
             </p>
           </div>
 
@@ -205,7 +174,8 @@ export default function AboutPage() {
                     <div className="shimmer absolute inset-0" />
                     <Icon className="w-7 h-7 sm:w-10 sm:h-10 text-purple-400 mb-3 sm:mb-4 relative z-10 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2 relative z-10">{stat.number}</div>
-                    <div className="text-gray-400 text-xs sm:text-sm relative z-10">{stat.label}</div>
+                    <div className="text-gray-400 text-xs sm:text-sm font-semibold mb-2 relative z-10">{stat.label}</div>
+                    <div className="text-gray-500 text-xs relative z-10">{stat.description}</div>
                   </div>
                 </div>
               );
@@ -237,18 +207,23 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white">Our Story</h2>
               <div className="space-y-3 sm:space-y-4 text-gray-400 text-base sm:text-lg">
                 <p className="leading-relaxed">
-                  Founded in 2016, Elite8 Digital emerged from a simple belief: that exceptional 
-                  digital experiences should be accessible to businesses of all sizes.
+                  Every great digital product starts with a spark — an idea, a dream, a "what if?" At Elite8 Digital, that spark is what drives us.
                 </p>
                 <p className="leading-relaxed">
-                  What started as a small team of passionate designers and developers has grown 
-                  into a full-service digital agency, serving clients across the globe with 
-                  innovative solutions that drive real results.
+                  We started with a simple belief: technology should feel human. It should empower, inspire, and create real impact. What began as a small group of passionate minds, united by creativity and code, has now evolved into a full-service digital agency helping brands, colleges, and startups build the future they envision.
                 </p>
                 <p className="leading-relaxed">
-                  Today, we combine strategic thinking, creative excellence, and technical 
-                  expertise to help brands thrive in the digital landscape. Our commitment 
-                  remains unchanged: delivering work that exceeds expectations.
+                  We saw how many institutions struggled with outdated platforms, clunky designs, or websites that couldn't keep up with their growth. So, we stepped in — not just to build software, but to build trust, transform experiences, and scale ideas.
+                </p>
+                <p className="leading-relaxed">
+                  From beautifully designed websites and responsive mobile apps to robust platforms used by 1 lakh+ users, we craft digital solutions that are not just functional — they're unforgettable.
+                </p>
+                <p className="leading-relaxed">
+                  Our story is still being written. Every project we take on is another chapter, another chance to innovate, and another opportunity to create something that makes people say: "Wow. That's Elite."
+                </p>
+                <p className="leading-relaxed font-medium text-gray-300">
+                  We're not just here to develop.<br />
+                  We're here to imagine, innovate, and build— with heart.
                 </p>
               </div>
             </div>
@@ -256,93 +231,44 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission/Vision/Values Tabs */}
+      {/* Values Section */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 text-white px-4">
-            What Drives Us
+            Our Values
           </h2>
-          <p className="text-center text-gray-400 text-base sm:text-lg mb-8 sm:mb-12 px-4">Our core principles and aspirations</p>
+          <p className="text-center text-gray-400 text-base sm:text-lg mb-8 sm:mb-12 px-4">The principles that guide our work and define our culture.</p>
           
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
-            {['mission', 'vision', 'values'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 relative overflow-hidden text-sm sm:text-base ${
-                  activeTab === tab
-                    ? 'text-white'
-                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {activeTab === tab && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600" style={{ animation: 'pulse-glow 2s infinite' }} />
-                )}
-                <span className="relative z-10">{tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
-              </button>
-            ))}
-          </div>
-
           <div className="relative">
             <div className="absolute inset-0 rounded-2xl sm:rounded-3xl blur-2xl"></div>
             <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-purple-500/20 overflow-hidden">
               <div className="shimmer absolute inset-0" />
               
-              {activeTab === 'mission' && (
-                <div className="text-center relative z-10">
-                  <div className="inline-block mb-4 sm:mb-6 p-3 sm:p-4 rounded-2xl">
-                    <Target className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 animate-pulse" />
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">Our Mission</h3>
-                  <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-2">
-                    To empower businesses with innovative digital solutions that amplify their 
-                    brand presence, engage their audience, and drive measurable growth in an 
-                    ever-evolving digital landscape.
-                  </p>
-                </div>
-              )}
-
-              {activeTab === 'vision' && (
-                <div className="text-center relative z-10">
-                  <div className="inline-block mb-4 sm:mb-6 p-3 sm:p-4 bg-purple-500/20 rounded-2xl">
-                    <Rocket className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 animate-pulse" />
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">Our Vision</h3>
-                  <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-2">
-                    To be the most trusted digital partner for ambitious brands worldwide, 
-                    recognized for our creativity, technical excellence, and unwavering 
-                    commitment to client success.
-                  </p>
-                </div>
-              )}
-
-              {activeTab === 'values' && (
-                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 relative z-10">
-                  {values.map((value, i) => {
-                    const Icon = value.icon;
-                    return (
-                      <div 
-                        key={i} 
-                        className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-all duration-300 group"
-                        style={{ 
-                          animation: `float ${3 + i}s infinite ease-in-out`,
-                          animationDelay: `${i * 0.3}s`
-                        }}
-                      >
-                        <div className="flex-shrink-0">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-                            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white">{value.title}</h4>
-                          <p className="text-sm sm:text-base text-gray-400">{value.description}</p>
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 relative z-10">
+                {values.map((value, i) => {
+                  const Icon = value.icon;
+                  return (
+                    <div 
+                      key={i} 
+                      className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-all duration-300 group"
+                      style={{ 
+                        animation: `float ${3 + i}s infinite ease-in-out`,
+                        animationDelay: `${i * 0.3}s`
+                      }}
+                    >
+                      <div className="flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              )}
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white">{value.title}</h4>
+                        <p className="text-sm sm:text-base text-gray-400">{value.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -356,13 +282,13 @@ export default function AboutPage() {
             <div className="relative border-white border-2 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 text-center overflow-hidden">
               <div className="shimmer absolute inset-0" />
               <div className="relative z-10">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-white px-2">Ready to Start Your Journey?</h2>
-                <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-purple-100 px-2">
-                  Let's collaborate to bring your digital vision to life
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-white px-2">Join Our Team</h2>
+                <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-300 px-2">
+                  We're always looking for talented individuals to join our team. If you're passionate about creating exceptional digital experiences, we'd love to hear from you.
                 </p>
-                <button className="bg-white text-purple-600 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-2xl relative overflow-hidden group/btn">
-                  <span className="relative z-10">Get In Touch</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+                <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:from-purple-500 hover:to-pink-500 transition-all duration-300 hover:scale-105 shadow-2xl relative overflow-hidden group/btn">
+                  <span className="relative z-10">Get in Touch</span>
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                 </button>
               </div>
             </div>

@@ -5,6 +5,14 @@ import img1 from '../assets/img1.avif';
 import img from '@/assets/try.jpg'
 import PortfolioMobile from './PortfolioMobile';
 import StatsSection from '@/components/layout/StatSection';
+import img10 from '@/assets/bharatonesty.png'
+import img2 from '@/assets/doctor.png'
+import img3 from '@/assets/lets.png'
+import img4 from '@/assets/ib1.png'
+import img5 from '@/assets/nymara1.png'
+import img8 from '@/assets/temple1.png'
+import img7 from '@/assets/milk.png'
+import img9 from '@/assets/photography.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -172,30 +180,63 @@ export default function HorizontalScrollSnap() {
 
 	const projectData = [
 		{
-			category: 'STRATEGY / DIGITAL',
-			title: 'Common Future Co.',
-			description:
-				'Common Future Co. came to us with a big mission but little clarity on how to communicate it. We began by rethinking their messaging, positioning them as forward-thinking yet accessible.',
+			category: 'BRANDING / IDENTITY',
+			title: 'Bharat Honesty',
+			description: 'A comprehensive branding initiative for Bharat Honesty, focusing on trust and transparency. We developed a modern identity system that communicates integrity while maintaining cultural relevance.',
+			image: img10,
+			color: '#1a1a2e'
 		},
 		{
-			category: 'BRANDING / DESIGN',
-			title: 'Urban Essence',
-			description:
-				'Urban Essence needed a complete brand overhaul. We crafted a modern identity that resonates with their target audience while maintaining their core values of sustainability and innovation.',
+			category: 'HEALTHCARE / DIGITAL',
+			title: 'Medical Excellence',
+			description: 'Revolutionizing healthcare communication through strategic digital transformation. We created an approachable yet professional brand that bridges the gap between medical expertise and patient care.',
+			image: img2,
+			color: '#0f3460'
 		},
 		{
-			category: 'DIGITAL / EXPERIENCE',
-			title: 'Peak Performance',
-			description:
-				'Peak Performance wanted to revolutionize their digital presence. We created an immersive experience that showcases their expertise while providing seamless user interactions.',
+			category: 'EVENT / EXPERIENCE',
+			title: 'Let\'s Connect',
+			description: 'Building meaningful connections through immersive event experiences. Our strategy focused on creating memorable touchpoints that transform attendees into brand advocates.',
+			image: img3,
+			color: '#16213e'
 		},
 		{
-			category: 'CREATIVE / CONTENT',
-			title: 'Artisan Collective',
-			description:
-				'Artisan Collective sought to elevate their storytelling. We developed a comprehensive content strategy that highlights their craftsmanship and connects deeply with their community.',
+			category: 'TECHNOLOGY / INNOVATION',
+			title: 'IB Solutions',
+			description: 'Empowering businesses through cutting-edge technology solutions. We positioned IB as a forward-thinking partner that simplifies complex technical challenges with elegant solutions.',
+			image: img4,
+			color: '#1a1a2e'
 		},
+		{
+			category: 'LUXURY / LIFESTYLE',
+			title: 'Nymara Collection',
+			description: 'Crafting an exclusive luxury experience for Nymara. We developed a sophisticated brand language that speaks to discerning customers who appreciate timeless elegance and exceptional quality.',
+			image: img5,
+			color: '#2d4059'
+		},
+		{
+			category: 'CREATIVE / PHOTOGRAPHY',
+			title: 'Visual Stories',
+			description: 'Elevating visual storytelling through innovative photography platforms. We created a digital ecosystem that showcases artistic vision while providing seamless client experiences.',
+			image: img9,
+			color: '#1a1a2e'
+		},
+		{
+			category: 'HERITAGE / CULTURE',
+			title: 'Temple Restoration',
+			description: 'Preserving cultural heritage through thoughtful restoration and modern documentation. Our approach balanced traditional values with contemporary presentation methods.',
+			image: img8,
+			color: '#0f3460'
+		},
+		{
+			category: 'FOOD & BEVERAGE',
+			title: 'Artisan Dairy',
+			description: 'Reimagining traditional dairy products for modern consumers. We developed a farm-to-table narrative that emphasizes quality, sustainability, and authentic craftsmanship.',
+			image: img7,
+			color: '#16213e'
+		}
 	];
+
 
 	// Render mobile component for small screens
 	if (isMobile) {
@@ -262,7 +303,7 @@ export default function HorizontalScrollSnap() {
 						<div className="flex flex-row justify-center items-center min-h-screen ">
 							<div className="flex flex-row items-center max-w-7xl relative">
 								<div className="w-1/2">
-									<img src={img1} alt={project.title} className="w-full h-auto object-cover" />
+									<img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
 								</div>
 
 								<div className="w-1/2 bg-black p-16 flex flex-col justify-center -ml-32 relative z-10">
