@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import avatar1 from '@/assets/vikas.png';
-import avatar2 from '@/assets/lets-taxify.png';
-import avatar3 from '@/assets/sunita.png';
-import avatar4 from '@/assets/unnamed.png';
-import avatar6 from '@/assets/ib.png';
-import team1 from '@/assets/o-nesty.png';
+import avatar1 from '../../assets/vikas.png';
+import avatar2 from '../../assets/lets-taxify.png';
+import avatar3 from '../../assets/sunita.png';
+import avatar4 from '../../assets/unnamed.png';
+import avatar6 from '../../assets/ib.png';
+import team1 from '../../assets/o-nesty.png';
 
 
 const testimonials = [
@@ -129,9 +129,12 @@ export default function TestimonialScroll() {
                 className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-800 flex items-center justify-center text-white font-semibold flex-shrink-0">
-                    {testimonial.image}
-                  </div>
+                  <img
+  src={testimonial.image}
+  alt={testimonial.name}
+  className="w-12 h-12 rounded-full object-cover flex-shrink-0 border border-white/20"
+/>
+
                   <div className="flex-1">
                     <p className="text-white/90 mb-4 leading-relaxed">"{testimonial.content}"</p>
                     <div>

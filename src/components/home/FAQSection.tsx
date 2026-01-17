@@ -6,37 +6,74 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "What exactly is Platform?",
-      answer: "Platform is a comprehensive solution designed to streamline your business operations. It combines cutting-edge technology with intuitive design to help teams collaborate more effectively and achieve their goals faster."
-    },
-    {
-      question: "How does Platform's AI actually work?",
-      answer: "Our AI leverages advanced machine learning algorithms to understand your business processes and provide intelligent recommendations. It learns from your team's interactions and continuously improves to deliver more accurate and relevant insights."
-    },
-    {
-      question: "How long does implementation take?",
-      answer: "Implementation typically takes 2-4 weeks depending on your specific requirements and team size. Our dedicated onboarding team works closely with you to ensure a smooth transition with minimal disruption to your operations."
-    },
-    {
-      question: "What kind of support do you provide?",
-      answer: "We offer 24/7 customer support through multiple channels including live chat, email, and phone. Our expert team is always ready to help with technical issues, training, and strategic guidance to maximize your success."
-    },
-    {
-      question: "How does pricing work?",
-      answer: "Our pricing is flexible and scales with your needs. We offer tiered plans based on team size and features required. Contact our sales team for a customized quote that fits your budget and requirements."
-    },
-    {
-      question: "Is Platform secure?",
-      answer: "Security is our top priority. Platform employs enterprise-grade encryption, regular security audits, and compliance with industry standards including SOC 2, GDPR, and ISO 27001 to protect your data."
-    },
-    {
-      question: "Can Platform integrate with our existing tools?",
-      answer: "Yes! Platform offers seamless integrations with over 100+ popular business tools including Slack, Salesforce, Google Workspace, Microsoft 365, and many more. Our API also allows for custom integrations."
-    },
-    {
-      question: "How is Platform different from traditional infrastructure?",
-      answer: "Unlike traditional infrastructure, Platform is cloud-native, highly scalable, and requires minimal IT overhead. It offers real-time collaboration, AI-powered insights, and automatic updates without the need for complex on-premise setup."
-    }
+    question: "What exactly is Elite8 Digital?",
+    answer:
+      "Elite8 Digital is a technology and digital solutions company focused on building scalable, high-performance products for businesses. We specialize in modern web development, backend systems, cloud solutions, and digital transformation that help organizations grow faster and operate smarter."
+  },
+    // {
+    //   question: "How does Platform's AI actually work?",
+    //   answer: "Our AI leverages advanced machine learning algorithms to understand your business processes and provide intelligent recommendations. It learns from your team's interactions and continuously improves to deliver more accurate and relevant insights."
+    // },
+    // {
+    //   question: "How long does implementation take?",
+    //   answer: "Implementation typically takes 2-4 weeks depending on your specific requirements and team size. Our dedicated onboarding team works closely with you to ensure a smooth transition with minimal disruption to your operations."
+    // },
+    // {
+    //   question: "What kind of support do you provide?",
+    //   answer: "We offer 24/7 customer support through multiple channels including live chat, email, and phone. Our expert team is always ready to help with technical issues, training, and strategic guidance to maximize your success."
+    // },
+    // {
+    //   question: "How does pricing work?",
+    //   answer: "Our pricing is flexible and scales with your needs. We offer tiered plans based on team size and features required. Contact our sales team for a customized quote that fits your budget and requirements."
+    // },
+    // {
+    //   question: "Is Platform secure?",
+    //   answer: "Security is our top priority. Platform employs enterprise-grade encryption, regular security audits, and compliance with industry standards including SOC 2, GDPR, and ISO 27001 to protect your data."
+    // },
+    // {
+    //   question: "Can Platform integrate with our existing tools?",
+    //   answer: "Yes! Platform offers seamless integrations with over 100+ popular business tools including Slack, Salesforce, Google Workspace, Microsoft 365, and many more. Our API also allows for custom integrations."
+    // },
+    // {
+    //   question: "How is Platform different from traditional infrastructure?",
+    //   answer: "Unlike traditional infrastructure, Platform is cloud-native, highly scalable, and requires minimal IT overhead. It offers real-time collaboration, AI-powered insights, and automatic updates without the need for complex on-premise setup."
+    // }
+
+     {
+    question: "How does Elite8 Digital use AI in its solutions?",
+    answer:
+      "At Elite8 Digital, we use AI and data-driven technologies to enhance automation, analytics, and decision-making. Depending on the project, this can include intelligent recommendations, predictive insights, workflow optimization, and custom AI integrations tailored to your business needs."
+  },
+  {
+    question: "How long does implementation usually take?",
+    answer:
+      "Implementation timelines vary based on project scope and complexity, but most solutions are delivered within 2–6 weeks. We follow an agile development process, allowing you to see progress early while ensuring quality, scalability, and performance."
+  },
+  {
+    question: "What kind of support does Elite8 Digital provide?",
+    answer:
+      "We provide end-to-end support including onboarding, deployment, maintenance, and post-launch optimization. Our team offers ongoing technical support, performance monitoring, and feature enhancements to ensure long-term success."
+  },
+  {
+    question: "How does pricing work at Elite8 Digital?",
+    answer:
+      "Our pricing is flexible and project-based. Costs depend on the scope, features, technology stack, and timeline. We believe in transparent pricing and provide detailed proposals so you know exactly what you're paying for—no hidden fees."
+  },
+  {
+    question: "Is Elite8 Digital secure?",
+    answer:
+      "Yes. Security is built into everything we develop. Elite8 Digital follows industry best practices including secure authentication, data encryption, role-based access control, and regular security reviews to ensure your applications and data remain protected."
+  },
+  {
+    question: "Can Elite8 Digital integrate with our existing tools and systems?",
+    answer:
+      "Absolutely. We specialize in building integrations with existing tools, APIs, and third-party platforms such as CRMs, payment gateways, analytics tools, and cloud services. We also develop custom APIs when needed."
+  },
+  {
+    question: "How is Elite8 Digital different from traditional IT service providers?",
+    answer:
+      "Unlike traditional IT providers, Elite8 Digital focuses on modern, scalable, and future-ready solutions. We combine clean architecture, cloud-native development, automation, and performance optimization to deliver products that are easy to maintain, scale, and evolve."
+  }
   ];
 
   const toggleFAQ = (index: number) => {
