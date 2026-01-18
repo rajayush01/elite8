@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Award, Users, Target, Zap, TrendingUp, Heart, Code, Rocket, Sparkles } from 'lucide-react';
 
+type Particle = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+};
+
 export default function AboutPage() {
   const [scrollY, setScrollY] = useState(0);
   const [activeTab, setActiveTab] = useState('mission');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [particles, setParticles] = useState([]);
+const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -14,7 +23,7 @@ export default function AboutPage() {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
@@ -22,16 +31,18 @@ export default function AboutPage() {
   }, []);
 
   useEffect(() => {
-    const newParticles = Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 20 + 10,
-      delay: Math.random() * 5
-    }));
-    setParticles(newParticles);
-  }, []);
+  const newParticles: Particle[] = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 4 + 1,
+    duration: Math.random() * 20 + 10,
+    delay: Math.random() * 5,
+  }));
+
+  setParticles(newParticles);
+}, []);
+
 
   const stats = [
     { number: '10+', label: 'Team Members', icon: Users, description: 'Talented designers, developers, and strategists.' },

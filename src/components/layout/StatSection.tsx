@@ -1,9 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const AnimatedCounter = ({ end, duration = 2000, suffix = '' }) => {
+type AnimatedCounterProps = {
+  end: number;
+  duration?: number;
+  suffix?: string;
+};
+
+
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+  end,
+  duration = 2000,
+  suffix = '',
+}) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+const ref = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,11 +40,12 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = '' }) => {
   useEffect(() => {
     if (!isVisible) return;
 
-    let startTime;
-    let animationFrame;
+    let startTime: number | null = null;
+let animationFrame: number | null = null;
 
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
+
+const animate = (timestamp: number) => {
+if (startTime === null) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
       

@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
 import mob from '@/assets/mob.jpg'
 
-const services = [
+type Service = {
+  number: string;
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+};
+
+type ServiceCardProps = {
+  service: Service;
+  index: number;
+};
+
+
+const services: Service[] = [
   {
     number: '01',
     title: 'Custom Website Design, Development & Maintenance',
@@ -86,7 +100,7 @@ const services = [
 ];
 
 
-const ServiceCard = ({ service, index }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

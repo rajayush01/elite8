@@ -4,8 +4,8 @@ import vid from '../../assets/hero.mp4';
 const HeroSection = () => {
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [isLoaded, setIsLoaded] = useState(false);
-	const sectionRef = useRef(null);
-	const textRef = useRef(null);
+	const sectionRef = useRef<HTMLDivElement | null>(null);
+	const textRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		// Trigger initial animation after component mounts
@@ -13,23 +13,40 @@ const HeroSection = () => {
 			setIsLoaded(true);
 		}, 100);
 
-		const canvas = document.getElementById('galaxyCanvas');
-		const ctx = canvas.getContext('2d');
+		const canvas = document.getElementById('galaxyCanvas') as HTMLCanvasElement | null;
+		if (!canvas) return;
+
+		const context = canvas.getContext('2d');
+if (!context) return;
+
+const ctx: CanvasRenderingContext2D = context;
+const canvasEl: HTMLCanvasElement = canvas;
+
 
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 
-		const particles = [];
+		const particles: Particle[] = [];
 		const particleCount = 150;
 
 		class Particle {
-			constructor() {
+			x!: number;
+			y!: number;
+			size!: number;
+			speedX!: number;
+			speedY!: number;
+			opacity!: number;
+			twinkleSpeed!: number;
+			twinklePhase!: number;
+			currentOpacity!: number;
+
+			constructor(private canvas: HTMLCanvasElement) {
 				this.reset();
 			}
 
 			reset() {
-				this.x = Math.random() * canvas.width;
-				this.y = Math.random() * canvas.height;
+				this.x = Math.random() * this.canvas.width;
+				this.y = Math.random() * this.canvas.height;
 				this.size = Math.random() * 1 + 0.2;
 				this.speedX = (Math.random() - 0.5) * 0.08;
 				this.speedY = (Math.random() - 0.5) * 0.08;
@@ -42,27 +59,28 @@ const HeroSection = () => {
 				this.x += this.speedX;
 				this.y += this.speedY;
 
-				if (this.x < 0) this.x = canvas.width;
-				if (this.x > canvas.width) this.x = 0;
-				if (this.y < 0) this.y = canvas.height;
-				if (this.y > canvas.height) this.y = 0;
+				if (this.x < 0) this.x = this.canvas.width;
+				if (this.x > this.canvas.width) this.x = 0;
+				if (this.y < 0) this.y = this.canvas.height;
+				if (this.y > this.canvas.height) this.y = 0;
 
 				this.twinklePhase += this.twinkleSpeed;
 				this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(this.twinklePhase));
 			}
 
-			draw() {
+			draw(ctx: CanvasRenderingContext2D) {
 				const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
-				gradient.addColorStop(0, `rgba(255, 255, 255, ${this.currentOpacity * 0.5})`);
-				gradient.addColorStop(0.5, `rgba(200, 220, 255, ${this.currentOpacity * 0.2})`);
-				gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+				gradient.addColorStop(0, `rgba(255,255,255,${this.currentOpacity * 0.5})`);
+				gradient.addColorStop(0.5, `rgba(200,220,255,${this.currentOpacity * 0.2})`);
+				gradient.addColorStop(1, 'rgba(255,255,255,0)');
 
 				ctx.fillStyle = gradient;
 				ctx.beginPath();
 				ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
 				ctx.fill();
 
-				ctx.fillStyle = `rgba(255, 255, 255, ${this.currentOpacity})`;
+				ctx.fillStyle = `rgba(255,255,255,${this.currentOpacity})`;
 				ctx.beginPath();
 				ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 				ctx.fill();
@@ -70,31 +88,34 @@ const HeroSection = () => {
 		}
 
 		for (let i = 0; i < particleCount; i++) {
-			particles.push(new Particle());
+			particles.push(new Particle(canvas));
 		}
 
 		for (let i = 0; i < 20; i++) {
-			const p = new Particle();
+			const p = new Particle(canvas);
 			p.size = Math.random() * 1.5 + 0.8;
 			p.opacity = Math.random() * 0.3 + 0.2;
 			particles.push(p);
 		}
 
 		function animate() {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
 			particles.sort((a, b) => a.size - b.size);
-			particles.forEach((particle) => {
-				particle.update();
-				particle.draw();
+
+			particles.forEach((p) => {
+				p.update();
+				p.draw(ctx);
 			});
+
 			requestAnimationFrame(animate);
 		}
 
 		animate();
 
 		const handleResize = () => {
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
+			canvasEl.width = window.innerWidth;
+			canvasEl.height = window.innerHeight;
 		};
 
 		window.addEventListener('resize', handleResize);
@@ -125,9 +146,11 @@ const HeroSection = () => {
 	}, []);
 
 	// Smooth easing function for animations
-	const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-	const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-	const easeInCubic = (t) => t * t * t;
+	const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
+
+	const easeInOutCubic = (t: number): number => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+	const easeInCubic = (t: number): number => t * t * t;
 
 	// Split scroll progress into two phases
 	// Phase 1 (0 - 0.5): First text fades out
@@ -146,7 +169,7 @@ const HeroSection = () => {
 		'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
 	const words = text.split(' ');
 
-	const getWordOpacity = (wordIndex, charIndexInWord) => {
+	const getWordOpacity = (wordIndex: number, charIndexInWord: number) => {
 		// Start color transition after text is visible and user scrolls past half the screen
 		const totalChars = text.length;
 		const currentCharIndex = words.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0) + charIndexInWord;
