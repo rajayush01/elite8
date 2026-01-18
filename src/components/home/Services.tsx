@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import mob from '@/assets/mob.jpg'
 
 type Service = {
   number: string;
@@ -13,7 +12,6 @@ type ServiceCardProps = {
   service: Service;
   index: number;
 };
-
 
 const services: Service[] = [
   {
@@ -50,7 +48,7 @@ const services: Service[] = [
       'Responsive and adaptive websites and applications that deliver seamless user experiences across all devices.',
     tags: ['Responsive Design', 'Cross-Platform', 'Mobile UX', 'Performance'],
     image:
-      mob
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
   },
   {
     number: '05',
@@ -99,7 +97,6 @@ const services: Service[] = [
   }
 ];
 
-
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -109,49 +106,57 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`transition-all duration-700 ease-out ${isHovered ? 'py-8 md:py-12' : 'py-6 md:py-8'}`}>
+      <div className={`transition-all duration-700 ease-out ${isHovered ? 'py-6 md:py-12' : 'py-3 md:py-8'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-0">
-            {/* Number */}
-            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-700">
-              {service.number}
-              <span className="text-purple-500">.</span>
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
+            {/* Number and Title on Mobile */}
+            <div className="flex items-start gap-3 sm:gap-4 md:block w-full md:w-auto">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-700 flex-shrink-0">
+                {service.number}
+                <span className="text-purple-500">.</span>
+              </div>
+              
+              <div className="md:hidden flex-1">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-200">
+                  {service.title}
+                </h2>
+              </div>
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 flex flex-col md:flex-row items-start md:items-center md:justify-end gap-6 md:gap-12 w-full md:w-auto">
+            <div className="flex-1 flex flex-col md:flex-row items-start md:items-center md:justify-end gap-4 md:gap-12 w-full md:w-auto">
               {/* Image - appears on hover */}
               <div
                 className={`transition-all duration-700 ease-out w-full md:w-auto ${
                   isHovered ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-95 md:-translate-x-8 translate-x-0'
                 }`}
               >
-                <div className="relative w-full md:w-80 lg:w-96 h-56 sm:h-64 md:h-60 lg:h-72 rounded-2xl overflow-hidden">
+                <div className="relative w-full md:w-80 lg:w-96 h-48 sm:h-56 md:h-60 lg:h-72 rounded-2xl overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover"
                   />
                   {/* Decorative colored blocks */}
-                  <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 w-20 sm:w-28 md:w-32 h-20 sm:h-28 md:h-32 bg-red-500 opacity-80 rounded-lg"></div>
-                  <div className="absolute -bottom-4 sm:-bottom-8 right-12 sm:right-16 md:right-20 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-purple-400 opacity-70 rounded-lg"></div>
-                  <div className="absolute top-1/2 -right-3 sm:-right-4 md:-right-6 w-12 sm:w-16 md:w-20 h-24 sm:h-32 md:h-40 bg-teal-700 opacity-80 rounded-lg"></div>
+                  <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 bg-red-500 opacity-80 rounded-lg"></div>
+                  <div className="absolute -bottom-4 sm:-bottom-8 right-10 sm:right-14 md:right-20 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 bg-purple-400 opacity-70 rounded-lg"></div>
+                  <div className="absolute top-1/2 -right-3 sm:-right-4 md:-right-6 w-10 sm:w-14 md:w-20 h-20 sm:h-28 md:h-40 bg-teal-700 opacity-80 rounded-lg"></div>
                 </div>
               </div>
 
               {/* Text Content */}
               <div className="text-left md:text-right w-full md:w-auto">
-                <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-3 md:mb-4">
+                <h2 className="hidden md:block text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-3 md:mb-4">
                   {service.title}
                 </h2>
                 
                 {/* Description - appears on hover */}
                 <div
                   className={`transition-all duration-500 delay-100 ${
-                    isHovered ? 'opacity-100 max-h-60 md:max-h-20 mb-4 md:mb-6' : 'opacity-0 max-h-0 mb-0'
+                    isHovered ? 'opacity-100 max-h-60 md:max-h-20 mb-3 md:mb-6' : 'opacity-0 max-h-0 mb-0'
                   } overflow-hidden`}
                 >
-                  <p className="text-gray-400 text-base sm:text-lg md:text-xl">
+                  <p className="text-gray-400 text-sm sm:text-base md:text-xl">
                     {service.description}
                   </p>
                 </div>

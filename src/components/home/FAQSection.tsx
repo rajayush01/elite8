@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logo from "../../assets/elite8digital-nav-cropped.png"
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -132,11 +131,11 @@ const FAQSection = () => {
                       </textPath>
                     </text>
                   </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 bg-purple-600 rounded-full flex flex-col justify-center items-center shadow-lg shadow-purple-500/50">
                       <img src={logo} alt="Elite8 Digital" className='w-10'/>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

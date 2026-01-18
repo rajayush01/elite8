@@ -146,7 +146,7 @@ const HeroSection = () => {
 	const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3); 
 	const easeInOutCubic = (t: number): number => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); 
 	const easeInCubic = (t: number): number => t * t * t;
-	
+
 	const firstTextOpacity = Math.max(0, 1 - scrollProgress * 2);
 	const secondTextProgress = Math.max(0, (scrollProgress - 0.5) * 2);
 	const smoothSecondTextProgress = easeInOutCubic(secondTextProgress);
@@ -215,7 +215,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 			>
 				<div className="flex-1 flex items-center justify-center">
 					<div className="max-w-7xl w-full text-center flex flex-col justify-center items-center">
-						<h1 className="text-white text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-light leading-tight tracking-tight mt-10">
+						<h1 className="text-white text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-light leading-tight tracking-tight mt-16 md:mt-10">
 							<span
 								className="block mb-2"
 								style={{
@@ -256,7 +256,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 
 				{/* CTA Bottom Bar */}
 				<div
-					className="mb-12 md:mb-16"
+					className="mb-28 md:mb-16"
 					style={{
 						opacity: isLoaded ? 1 : 0,
 						transform: `translateY(${isLoaded ? 0 : 20}px)`,
@@ -337,7 +337,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 
 					{/* Decorative SVG Shape */}
 					<div
-						className="max-w-6xl -mt-12 -ml-16"
+						className="max-w-6xl -mt-12 -ml-32"
 						style={{
 							opacity: smoothSecondTextProgress,
 							transform: `translateX(${(1 - smoothSecondTextProgress) * 120}px) scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,

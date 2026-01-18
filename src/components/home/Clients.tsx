@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from 'motion/react';
+import { motion, useMotionValue, useTransform, useAnimationFrame } from 'motion/react';
 import img3 from '@/assets/lets-taxify.png'
 import img2 from '@/assets/o-nesty.png'
 import img1 from '@/assets/vikas.png'
@@ -32,15 +32,6 @@ function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>):
 
 const Clients = () => {
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
-  const velocityFactor = useTransform(
-    smoothVelocity,
-    [0, 1000],
-    [0, 5],
-    { clamp: false }
-  );
   
   const copyRef = useRef<HTMLDivElement>(null);
   const copyWidth = useElementWidth(copyRef);
@@ -56,19 +47,10 @@ const Clients = () => {
     return `${wrap(-copyWidth, 0, v)}px`;
   });
   
-  const directionFactor = useRef<number>(1);
   const baseVelocity = 50;
   
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-    
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
-    }
-    
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    const moveBy = -1 * baseVelocity * (delta / 1000);
     baseX.set(baseX.get() + moveBy);
   });
   

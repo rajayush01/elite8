@@ -77,8 +77,8 @@ export default function Header() {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="pt-24 px-8">
-          <nav className="flex flex-col gap-6">
+        <div className="pt-24 px-8 z-[60]">
+          <nav className="flex flex-col gap-6 mt-10">
             <Link to="/" onClick={closeMenu} className="text-purple-200 text-xl">
               Home
             </Link>
