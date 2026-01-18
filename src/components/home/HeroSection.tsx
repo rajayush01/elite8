@@ -159,7 +159,7 @@ const HeroSection = () => {
 		'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
 	const words = text.split(' ');
 
-	const getWordOpacity = (wordIndex, charIndexInWord) => {
+const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 		const totalChars = text.length;
 		const currentCharIndex = words.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0) + charIndexInWord;
 

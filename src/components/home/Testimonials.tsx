@@ -66,13 +66,13 @@ const testimonials = [
 ];
 
 export default function TestimonialScroll() {
-  const scrollRef = useRef(null);
+const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let animationFrameId;
+let animationFrameId: number;
     let scrollPosition = 0;
     const scrollSpeed = 0.8;
 
