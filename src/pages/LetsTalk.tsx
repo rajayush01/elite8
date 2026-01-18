@@ -3,23 +3,76 @@ import { Monitor, ArrowRight } from 'lucide-react';
 import Clients from '@/components/home/Clients';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
+;
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+const [submitSuccess, setSubmitSuccess] = useState(false);
+
+const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+});
+
+
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch(
+      'https://lets-taxify.onrender.com/api/contact/elite8',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        mode: 'cors',
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || 'Failed to send message');
+    }
+
+    await response.json();
+    setSubmitSuccess(true);
+
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+      setSubmitSuccess(false);
+    }, 3000);
+  } catch (error: unknown) {
+    console.error('Error submitting form:', error);
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : 'Failed to send message. Please try again later.';
+    alert(errorMessage);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
   });
+};
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <div className="min-h-screen bg-black text-white mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-40 my-28 sm:my-20 md:my-20 lg:my-24 border border-gray-800">
@@ -86,8 +139,12 @@ const ContactSection = () => {
               <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">Fill out the form — we'll get back to you shortly.</p>
             </div>
             <div className="mx-4 sm:mx-6 md:mx-8 lg:mx-12">
-              <div className="space-y-1">
+             <form onSubmit={handleSubmit} className="space-y-1">
+
                 <div>
+                    <label className="block text-xs sm:text-sm text-gray-400 mb-1">
+      Name
+    </label>
                   <input
                     type="text"
                     name="name"
@@ -99,6 +156,9 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
+                    <label className="block text-xs sm:text-sm text-gray-400 mb-1">
+      Email
+    </label>
                   <input
                     type="email"
                     name="email"
@@ -110,17 +170,25 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
+
+                    <label className="block text-xs sm:text-sm text-gray-400 mb-1">
+      Subject
+    </label>
                   <input
                     type="text"
                     name="company"
-                    placeholder="Your Company"
-                    value={formData.company}
+                    placeholder="subject"
+                    value={formData.subject}
                     onChange={handleChange}
                     className="w-full bg-gray-900 border-b border-gray-800 py-2.5 sm:py-3 text-sm sm:text-base text-gray-300 placeholder-gray-600 focus:outline-none focus:border-[#ff6b4a] transition-colors rounded-lg px-2"
                   />
                 </div>
                 
                 <div>
+
+                    <label className="block text-xs sm:text-sm text-gray-400 mb-1">
+      Message
+    </label>
                   <textarea
                     name="message"
                     placeholder="Your message"
@@ -143,7 +211,7 @@ const ContactSection = () => {
                     <ArrowRight size={20} className="sm:w-6 sm:h-6" strokeWidth={2.5} />
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
