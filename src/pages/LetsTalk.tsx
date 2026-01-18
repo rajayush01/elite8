@@ -176,7 +176,7 @@ const handleChange = (
     </label>
                   <input
                     type="text"
-                    name="company"
+                    name="subject"
                     placeholder="subject"
                     value={formData.subject}
                     onChange={handleChange}

@@ -16,7 +16,7 @@ const Home = () => {
       </div>
       <Services />
       <ProjectTimeline/>
-      <UsVsOthers/>
+      {/* <UsVsOthers/> */}
       <TestimonialScroll />
       <FAQSection />
       {/* <ProcessSection /> */}

@@ -337,7 +337,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 
 					{/* Decorative SVG Shape */}
 					<div
-						className="max-w-6xl -mt-12"
+						className="max-w-6xl -mt-12 -ml-16"
 						style={{
 							opacity: smoothSecondTextProgress,
 							transform: `translateX(${(1 - smoothSecondTextProgress) * 120}px) scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,
