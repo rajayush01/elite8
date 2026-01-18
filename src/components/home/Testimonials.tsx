@@ -141,7 +141,7 @@ export default function TestimonialScroll() {
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover flex-shrink-0 border border-white/20"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-contain flex-shrink-0 border border-white/20"
                     />
                     <div className="flex-1 min-w-0">
                       <p className="text-white/90 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">

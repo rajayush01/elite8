@@ -148,7 +148,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
                 {/* Description - appears on hover */}
                 <div
                   className={`transition-all duration-500 delay-100 ${
-                    isHovered ? 'opacity-100 max-h-20 md:max-h-20 mb-4 md:mb-6' : 'opacity-0 max-h-0 mb-0'
+                    isHovered ? 'opacity-100 max-h-60 md:max-h-20 mb-4 md:mb-6' : 'opacity-0 max-h-0 mb-0'
                   } overflow-hidden`}
                 >
                   <p className="text-gray-400 text-base sm:text-lg md:text-xl">

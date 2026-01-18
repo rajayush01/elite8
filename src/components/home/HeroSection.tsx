@@ -256,7 +256,7 @@ const HeroSection = () => {
           pointerEvents: secondTextProgress === 0 ? 'none' : 'auto',
         }}
       >
-        <div className="max-w-6xl w-full flex items-center justify-between gap-12">
+        <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
           <div
             ref={textRef}
             className="flex-1"
@@ -293,7 +293,7 @@ const HeroSection = () => {
 
           {/* Decorative SVG Shape */}
           <div
-            className="hidden lg:block"
+            className="max-w-6xl -mt-12"
             style={{
               opacity: smoothSecondTextProgress,
               transform: `translateX(${(1 - smoothSecondTextProgress) * 120}px) scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,
