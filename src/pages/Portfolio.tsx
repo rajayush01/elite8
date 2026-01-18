@@ -81,10 +81,9 @@ export default function HorizontalScrollSnap() {
 			scrollTrigger: {
 				trigger: containerRef.current,
 				pin: true,
-				scrub: 0.5, // Reduced for smoother, more direct control
-				snap: false, // Removed snap for precise scrolling
+				scrub: 0.5,
 				start: 'top top',
-				end: () => `+=${panels.length * 1000}`, // More granular control
+				end: () => `+=${panels.length * 1000}`,
 			},
 		});
 
