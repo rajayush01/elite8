@@ -85,9 +85,9 @@ export default function Header() {
             <Link to="/portfolio" onClick={closeMenu} className="text-purple-200 text-xl">
               Portfolio
             </Link>
-            <Link to="/careers" onClick={closeMenu} className="text-purple-200 text-xl">
+            {/* <Link to="/careers" onClick={closeMenu} className="text-purple-200 text-xl">
               Careers
-            </Link>
+            </Link> */}
             <Link to="/about" onClick={closeMenu} className="text-purple-200 text-xl">
               About
             </Link>
