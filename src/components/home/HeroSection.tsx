@@ -340,17 +340,17 @@ const HeroSection = () => {
 
 			{/* Section 2: Character-by-character reveal */}
 			<div
-				className="sticky top-0 h-screen flex items-center justify-center px-6 md:px-20 z-20 bg-black"
+				className="sticky top-0 min-h-screen flex  items-center justify-center px-6 md:px-20 z-20 bg-black"
 				style={{
-    opacity: scrollProgress >= 0.5 ? 1 : 0,
-}}
+				opacity: scrollProgress >= 0.5 ? 1 : 0,
+				}}
 			>
-				<div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
-					<div className="flex-1">
+				<div className="max-w-7xl w-full sm:mt-0 mt-28  flex flex-col md:flex-row items-center justify-between gap-12">
+					<div className="flex sm:flex-row flex-col sm:gap-10">
 						<div className="mb-6">
 							<span className="text-gray-400 text-sm md:text-base uppercase tracking-wider">(ABOUT)</span>
 						</div>
-						<p className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+						<p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
 							{words.map((word, wordIndex) => (
 								<span key={wordIndex} className="inline-block mr-3 mb-2">
 									{word.split('').map((char, charIndex) => {
@@ -376,7 +376,7 @@ const HeroSection = () => {
 					</div>
 
 					{/* Decorative SVG Shape */}
-					<div
+					{/* <div
 						className="hidden md:block"
 						style={{
 							opacity: secondTextProgress,
@@ -426,7 +426,7 @@ const HeroSection = () => {
 								</circle>
 							))}
 						</svg>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>
