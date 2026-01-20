@@ -139,7 +139,7 @@ export default function ServicesMobile() {
                   openIndex === index ? 'rotate-45' : 'rotate-0'
                 }`}
               >
-                <span className="text-orange-500 text-3xl font-light leading-none">
+                <span className="text-purple-500 text-3xl font-light leading-none">
                   +
                 </span>
               </div>
