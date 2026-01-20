@@ -153,7 +153,7 @@ export default function ServicesMobile() {
                   : 'max-h-0 opacity-0'
               }`}
             >
-              <div className="pb-8 pl-14">
+              <div className="pb-8 pl-10">
                 <p className="text-gray-400 text-lg mb-6">
                   {service.description}
                 </p>
