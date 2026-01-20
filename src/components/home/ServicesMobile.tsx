@@ -102,7 +102,7 @@ export default function ServicesMobile() {
   return (
     <div className="bg-black text-white px-4 py-8">
 
-          <div className="border-b border-gray-800 py-12 sm:py-16 md:py-20">
+          <div className="border-b border-gray-800 py-2 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col justify-center items-center">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-0">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-200 leading-tight tracking-tight text-center sm:text-left">
