@@ -132,7 +132,7 @@ const HeroSection = () => {
 			if (!sectionRef.current) return;
 			const scrollY = window.scrollY;
 			const windowHeight = window.innerHeight;
-			const progress = Math.min(Math.max(scrollY / windowHeight, 0), 1);
+			const progress = Math.min(Math.max(scrollY / (windowHeight * 2), 0), 1);
 			setScrollProgress(progress);
 		};
 
@@ -147,38 +147,53 @@ const HeroSection = () => {
 	const easeInOutCubic = (t: number): number => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); 
 	const easeInCubic = (t: number): number => t * t * t;
 
-	const firstTextOpacity = Math.max(0, 1 - scrollProgress * 2);
-	const secondTextProgress = Math.max(0, (scrollProgress - 0.5) * 2);
-	const smoothSecondTextProgress = easeInOutCubic(secondTextProgress);
+	const firstTextOpacity = scrollProgress < 0.5 ? Math.max(0, 1 - scrollProgress * 4) : 0.5;
+	const secondTextProgress = scrollProgress < 0.5 ? 0 : Math.max(0, Math.min((scrollProgress - 0.5) * 2, 1));
 
 	// Video fades out near the end of the scroll
 	const videoOpacity = scrollProgress < 0.8 ? 1 : Math.max(0, 1 - (scrollProgress - 0.8) / 0.2);
 
 	// --- Text Reveal Logic ---
-	const text =
-		'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
+	const text = 'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
 	const words = text.split(' ');
 
-const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
-		const totalChars = text.length;
-		const currentCharIndex = words.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0) + charIndexInWord;
+	const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
+		const allChars: string[] = [];
+		words.forEach(word => {
+			word.split('').forEach(char => allChars.push(char));
+			allChars.push(' ');
+		});
+		
+		let currentCharIndex = 0;
+		for (let i = 0; i < wordIndex; i++) {
+			currentCharIndex += words[i].length + 1;
+		}
+		currentCharIndex += charIndexInWord;
 
-		if (smoothSecondTextProgress < 0.5) return 0.2;
+		const totalChars = allChars.length;
+		const revealedChars = secondTextProgress * totalChars;
 
-		const colorProgress = (smoothSecondTextProgress - 0.5) * 2;
-		const charsToHighlight = colorProgress * totalChars;
-		const distance = currentCharIndex - charsToHighlight;
-
-		if (distance > 5) return 0.2;
-		if (distance > 0) return 0.2 + (1 - distance / 5) * 0.8;
-		return 1;
+		if (currentCharIndex < revealedChars) {
+			return 1;
+		} else if (currentCharIndex < revealedChars + 1) {
+			return 0.6;
+		} else {
+			return 0.6;
+		}
 	};
 
-	const shapeRotation = smoothSecondTextProgress * 360;
-	const shapeScale = 0.7 + smoothSecondTextProgress * 0.3;
+	const shapeRotation = secondTextProgress * 360;
+	const shapeScale = 0.7 + secondTextProgress * 0.3;
+
+	const handleScrollDown = () => {
+    window.scrollTo({
+        top: window.innerHeight * 1.1,
+        behavior: 'smooth'
+    });
+};
 
 	return (
-		<div ref={sectionRef} className="relative w-full" style={{ height: '200vh' }}>
+		<div ref={sectionRef} className="relative w-full" style={{ height: '300vh' }}>
 			{/* Video Background Layer */}
 			<div
 				className="fixed inset-0 z-0 transition-opacity duration-300"
@@ -268,7 +283,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 						<div className="text-white">
 							<div className="text-xl md:text-2xl font-light mb-2">Bring your idea to life</div>
 							<div className="text-sm md:text-base text-gray-400 font-light">
-								Got an idea in mind? Let’s turn it into reality.
+								Got an idea in mind? Let's turn it into reality.
 							</div>
 						</div>
 						<div className="w-20 md:w-32 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
@@ -286,44 +301,69 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 						</button>
 					</div>
 				</div>
+
+				{/* Scroll Down Button */}
+				<div
+					className="absolute bottom-2 sm:bottom-36 left-1/2 transform -translate-x-1/2 z-20"
+					style={{
+						opacity: isLoaded ? 1 : 0,
+						transform: `translateX(-50%) translateY(${isLoaded ? 0 : 20}px)`,
+						transition:
+							'opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s',
+					}}
+				>
+					<button
+						onClick={handleScrollDown}
+						className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group"
+					>
+						<div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2 group-hover:border-white transition-colors duration-300">
+							<div className="w-1.5 h-1.5 bg-white/70 rounded-full animate-bounce group-hover:bg-white"></div>
+						</div>
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							className="group-hover:translate-y-1 transition-transform duration-300"
+						>
+							<path
+								d="M12 5V19M12 19L5 12M12 19L19 12"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
 			</div>
 
 			{/* Section 2: Character-by-character reveal */}
 			<div
-				className="relative z-20 min-h-screen flex items-center justify-center px-6 md:px-20"
+				className="sticky top-0 h-screen flex items-center justify-center px-6 md:px-20 z-20 bg-black"
 				style={{
-					opacity: smoothSecondTextProgress,
-					transform: `translateY(${(1 - smoothSecondTextProgress) * 80}px)`,
-					transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-					pointerEvents: secondTextProgress === 0 ? 'none' : 'auto',
-				}}
+    opacity: scrollProgress >= 0.5 ? 1 : 0,
+}}
 			>
-				<div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
-					<div
-						ref={textRef}
-						className="flex-1"
-						style={{
-							opacity: smoothSecondTextProgress,
-							transform: `translateX(${(1 - smoothSecondTextProgress) * -60}px)`,
-							transition:
-								'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)',
-						}}
-					>
+				<div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
+					<div className="flex-1">
+						<div className="mb-6">
+							<span className="text-gray-400 text-sm md:text-base uppercase tracking-wider">(ABOUT)</span>
+						</div>
 						<p className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
 							{words.map((word, wordIndex) => (
-								<span key={wordIndex} className="inline-block mr-3 mb-2 whitespace-nowrap">
+								<span key={wordIndex} className="inline-block mr-3 mb-2">
 									{word.split('').map((char, charIndex) => {
 										const opacity = getWordOpacity(wordIndex, charIndex);
+										const isHighlighted = opacity === 1;
 										return (
 											<span
 												key={charIndex}
 												style={{
-													color: 'white',
+													color: isHighlighted ? 'white' : '#4a4a4a',
 													opacity: opacity,
-													transform: `translateY(${(1 - opacity) * 20}px)`,
 													display: 'inline-block',
-													transition:
-														'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+													transition: 'color 0.3s ease, opacity 0.3s ease',
 												}}
 											>
 												{char}
@@ -337,12 +377,11 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 
 					{/* Decorative SVG Shape */}
 					<div
-						className="max-w-6xl -mt-12 -ml-32"
+						className="hidden md:block"
 						style={{
-							opacity: smoothSecondTextProgress,
-							transform: `translateX(${(1 - smoothSecondTextProgress) * 120}px) scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,
-							transition:
-								'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
+							opacity: secondTextProgress,
+							transform: `scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,
+							transition: 'opacity 0.5s ease, transform 0.5s ease',
 						}}
 					>
 						<svg
@@ -350,7 +389,7 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 							height="300"
 							viewBox="0 0 300 300"
 							style={{
-								filter: `drop-shadow(0 0 ${20 + smoothSecondTextProgress * 20}px rgba(255, 107, 53, 0.4))`,
+								filter: `drop-shadow(0 0 ${20 + secondTextProgress * 20}px rgba(255, 107, 53, 0.4))`,
 							}}
 						>
 							<defs>
@@ -369,10 +408,9 @@ const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
 							<polygon
 								points="150,50 250,100 230,180 150,220 70,180 50,100"
 								fill="url(#grad1)"
-								opacity={0.7 + smoothSecondTextProgress * 0.2}
+								opacity={0.7 + secondTextProgress * 0.2}
 								filter="url(#glow)"
 							/>
-							{/* Floating animated circles within the SVG */}
 							{[
 								{ cx: 180, cy: 80, r: 4, dur: '2s' },
 								{ cx: 120, cy: 90, r: 3, dur: '3s' },

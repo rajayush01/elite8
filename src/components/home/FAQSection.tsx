@@ -75,20 +75,21 @@ const FAQSection = () => {
                   </span>
                   <div className="flex-shrink-0 relative w-8 h-8 flex items-center justify-center">
                     <div className="relative w-8 h-8">
-                      {/* Plus icon that transforms to X */}
+                      {/* Two horizontal lines that transform to X */}
+                      {/* Top line */}
                       <div
-                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out ${
-                          openIndex === index ? 'rotate-45' : '-translate-y-1/2'
+                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out origin-center ${
+                          openIndex === index 
+                            ? 'rotate-45 translate-y-0' 
+                            : '-translate-y-2'
                         }`}
                       ></div>
+                      {/* Bottom line */}
                       <div
-                        className={`absolute left-1/2 top-0 w-0.5 h-8 bg-purple-400 transition-all duration-300 ease-in-out ${
-                          openIndex === index ? 'rotate-90 opacity-0' : '-translate-x-1/2 opacity-100'
-                        }`}
-                      ></div>
-                      <div
-                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out ${
-                          openIndex === index ? '-rotate-45' : '-translate-y-1/2 opacity-0'
+                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out origin-center ${
+                          openIndex === index 
+                            ? '-rotate-45 translate-y-0' 
+                            : 'translate-y-2'
                         }`}
                       ></div>
                     </div>
@@ -131,11 +132,6 @@ const FAQSection = () => {
                       </textPath>
                     </text>
                   </svg>
-                  {/* <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-purple-600 rounded-full flex flex-col justify-center items-center shadow-lg shadow-purple-500/50">
-                      <img src={logo} alt="Elite8 Digital" className='w-10'/>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

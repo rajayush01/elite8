@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-type Service = {
+interface Service {
   number: string;
   title: string;
   description: string;
   tags: string[];
   image: string;
-};
+}
+
 
 type ServiceCardProps = {
   service: Service;
@@ -102,7 +103,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
 
   return (
     <div
-      className="relative border-t border-gray-800 overflow-hidden"
+      className="relative border-t border-gray-800 border-b-2  overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
