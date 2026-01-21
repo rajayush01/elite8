@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import vid from '../../assets/hero.mp4';
 
 const HeroSection = () => {
@@ -142,22 +142,22 @@ const HeroSection = () => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	// --- Easing and Animation Values ---
-	const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3); 
-	const easeInOutCubic = (t: number): number => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); 
-	const easeInCubic = (t: number): number => t * t * t;
-
+	// --- Animation Values ---
 	const firstTextOpacity = scrollProgress < 0.5 ? Math.max(0, 1 - scrollProgress * 4) : 0.5;
 	const secondTextProgress = scrollProgress < 0.5 ? 0 : Math.max(0, Math.min((scrollProgress - 0.5) * 2, 1));
+
+	// Text slides up from bottom smoothly - starts very close to bottom
+	const textSlideProgress = scrollProgress < 0.5 ? 0 : Math.min((scrollProgress - 0.5) * 2.5, 1);
+	const textTranslateY = (1 - textSlideProgress) * 200; // Starts at 200px below (closer to bottom)
 
 	// Video fades out near the end of the scroll
 	const videoOpacity = scrollProgress < 0.8 ? 1 : Math.max(0, 1 - (scrollProgress - 0.8) / 0.2);
 
-	// --- Text Reveal Logic ---
+	// --- Text Reveal Logic - Character by Character with Opacity (Very Slow) ---
 	const text = 'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
 	const words = text.split(' ');
 
-	const getWordOpacity = (wordIndex: number, charIndexInWord: number): number => {
+	const getCharOpacity = (wordIndex: number, charIndexInWord: number): number => {
 		const allChars: string[] = [];
 		words.forEach(word => {
 			word.split('').forEach(char => allChars.push(char));
@@ -182,15 +182,17 @@ const HeroSection = () => {
 		}
 	};
 
-	const shapeRotation = secondTextProgress * 360;
-	const shapeScale = 0.7 + secondTextProgress * 0.3;
+
+
+
+
 
 	const handleScrollDown = () => {
-    window.scrollTo({
-        top: window.innerHeight * 1.1,
-        behavior: 'smooth'
-    });
-};
+		window.scrollTo({
+			top: window.innerHeight * 1.1,
+			behavior: 'smooth'
+		});
+	};
 
 	return (
 		<div ref={sectionRef} className="relative w-full" style={{ height: '300vh' }}>
@@ -338,14 +340,22 @@ const HeroSection = () => {
 				</div>
 			</div>
 
-			{/* Section 2: Character-by-character reveal */}
+			{/* Section 2: Character-by-character reveal with slide-up animation */}
 			<div
-				className="sticky top-0 min-h-screen flex  items-center justify-center px-6 md:px-20 z-20 bg-black"
+				ref={textRef}
+				className="sticky top-0 min-h-screen flex items-center justify-center px-6 md:px-20 z-20 bg-black"
 				style={{
-				opacity: scrollProgress >= 0.5 ? 1 : 0,
+					opacity: scrollProgress >= 0.5 ? 1 : 0,
+					transition: 'opacity 0.3s ease',
 				}}
 			>
-				<div className="max-w-7xl w-full sm:mt-0 mt-28  flex flex-col md:flex-row items-center justify-between gap-12">
+				<div
+					className="max-w-7xl w-full sm:mt-0 mt-28 flex flex-col md:flex-row items-center justify-between gap-12"
+					style={{
+						transform: `translateY(${textTranslateY}px)`,
+						transition: 'transform 0.3s ease-out',
+					}}
+				>
 					<div className="flex sm:flex-row flex-col sm:gap-10">
 						<div className="mb-6">
 							<span className="text-gray-400 text-sm md:text-base uppercase tracking-wider">(ABOUT)</span>
@@ -354,7 +364,7 @@ const HeroSection = () => {
 							{words.map((word, wordIndex) => (
 								<span key={wordIndex} className="inline-block mr-3 mb-2">
 									{word.split('').map((char, charIndex) => {
-										const opacity = getWordOpacity(wordIndex, charIndex);
+										const opacity = getCharOpacity(wordIndex, charIndex);
 										const isHighlighted = opacity === 1;
 										return (
 											<span
@@ -363,7 +373,7 @@ const HeroSection = () => {
 													color: isHighlighted ? 'white' : '#4a4a4a',
 													opacity: opacity,
 													display: 'inline-block',
-													transition: 'color 0.3s ease, opacity 0.3s ease',
+													transition: 'color 0.8s ease, opacity 0.8s ease', // Slow transition
 												}}
 											>
 												{char}
@@ -374,59 +384,6 @@ const HeroSection = () => {
 							))}
 						</p>
 					</div>
-
-					{/* Decorative SVG Shape */}
-					{/* <div
-						className="hidden md:block"
-						style={{
-							opacity: secondTextProgress,
-							transform: `scale(${shapeScale}) rotate(${shapeRotation * 0.3}deg)`,
-							transition: 'opacity 0.5s ease, transform 0.5s ease',
-						}}
-					>
-						<svg
-							width="300"
-							height="300"
-							viewBox="0 0 300 300"
-							style={{
-								filter: `drop-shadow(0 0 ${20 + secondTextProgress * 20}px rgba(255, 107, 53, 0.4))`,
-							}}
-						>
-							<defs>
-								<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-									<stop offset="0%" style={{ stopColor: '#ff6b35', stopOpacity: 0.8 }} />
-									<stop offset="100%" style={{ stopColor: '#f7931e', stopOpacity: 0.9 }} />
-								</linearGradient>
-								<filter id="glow">
-									<feGaussianBlur stdDeviation="4" result="coloredBlur" />
-									<feMerge>
-										<feMergeNode in="coloredBlur" />
-										<feMergeNode in="SourceGraphic" />
-									</feMerge>
-								</filter>
-							</defs>
-							<polygon
-								points="150,50 250,100 230,180 150,220 70,180 50,100"
-								fill="url(#grad1)"
-								opacity={0.7 + secondTextProgress * 0.2}
-								filter="url(#glow)"
-							/>
-							{[
-								{ cx: 180, cy: 80, r: 4, dur: '2s' },
-								{ cx: 120, cy: 90, r: 3, dur: '3s' },
-								{ cx: 200, cy: 140, r: 3, dur: '2.5s' },
-							].map((circle, i) => (
-								<circle key={i} cx={circle.cx} cy={circle.cy} r={circle.r} fill="white" opacity={0.5}>
-									<animate
-										attributeName="opacity"
-										values="0.5;1;0.5"
-										dur={circle.dur}
-										repeatCount="indefinite"
-									/>
-								</circle>
-							))}
-						</svg>
-					</div> */}
 				</div>
 			</div>
 		</div>

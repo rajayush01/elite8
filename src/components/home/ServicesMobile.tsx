@@ -129,7 +129,7 @@ export default function ServicesMobile() {
                 <span className="text-gray-600 text-lg font-light">
                   {service.number}.
                 </span>
-                <h2 className="text-2xl font-medium">
+                <h2 className="text-xl font-medium">
                   {service.title}
                 </h2>
               </div>
