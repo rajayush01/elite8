@@ -9,6 +9,7 @@ const LatestWork = () => {
     const [showAllProjects, setShowAllProjects] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const scrollTriggersRef = useRef<ScrollTrigger[]>([]);
 
     const allProjects = [
         {
@@ -88,14 +89,15 @@ const LatestWork = () => {
             const section = containerRef.current;
             if (!section) return;
 
-            // Kill any existing ScrollTriggers to prevent conflicts
-            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+            // Kill only THIS component's ScrollTriggers
+            scrollTriggersRef.current.forEach((trigger) => trigger.kill());
+            scrollTriggersRef.current = [];
 
             // Refresh ScrollTrigger after a brief delay to ensure layout is complete
             ScrollTrigger.refresh();
 
             // Pin the section with shorter scroll distance for faster transitions
-            ScrollTrigger.create({
+            const pinTrigger = ScrollTrigger.create({
                 trigger: section,
                 start: 'top top',
                 end: () => `+=${projects.length * 400}`,
@@ -111,11 +113,16 @@ const LatestWork = () => {
                     setCurrentIndex(newIndex);
                 },
             });
+            
+            // Store the ScrollTrigger
+            scrollTriggersRef.current.push(pinTrigger);
         }, 100);
 
         return () => {
             clearTimeout(timer);
-            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+            // Kill only THIS component's ScrollTriggers
+            scrollTriggersRef.current.forEach((trigger) => trigger.kill());
+            scrollTriggersRef.current = [];
         };
     }, [isMobile, projects.length, showAllProjects]);
 
