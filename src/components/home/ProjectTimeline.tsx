@@ -205,7 +205,7 @@ export default function ProjectTimeline() {
 					</p>
 					<h1 className="text-3xl font-bold mb-3 text-white">
 						We have best team
-						<br />
+						
 						and best process
 					</h1>
 					<p className="text-gray-400 text-sm max-w-md mb-6">
