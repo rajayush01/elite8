@@ -111,7 +111,7 @@
 //                     setCurrentIndex(newIndex);
 //                 },
 //             });
-            
+
 //             scrollTriggersRef.current.push(pinTrigger);
 //         }, 100);
 
@@ -130,7 +130,7 @@
 //             };
 
 //             window.addEventListener('load', handleLoad);
-            
+
 //             const refreshTimer = setTimeout(() => {
 //                 ScrollTrigger.refresh();
 //             }, 500);
@@ -150,18 +150,18 @@
 //         const progressPerProject = 1 / totalProjects;
 //         const projectStart = index * progressPerProject;
 //         const projectEnd = (index + 1) * progressPerProject;
-        
+
 //         // Very wide overlap for ultra smooth transitions
 //         const overlapStart = Math.max(0, projectStart - progressPerProject * 0.6);
 //         const overlapEnd = projectEnd;
-        
+
 //         let localProgress = 0;
 //         if (scrollProgress >= overlapStart && scrollProgress <= overlapEnd) {
 //             localProgress = (scrollProgress - overlapStart) / (overlapEnd - overlapStart);
 //         } else if (scrollProgress > overlapEnd) {
 //             localProgress = 1;
 //         }
-        
+
 //         // Add pause in center - image stays stable for middle portion
 //         let adjustedProgress = localProgress;
 //         if (localProgress < 0.3) {
@@ -174,15 +174,15 @@
 //             // Going up phase (0.7 to 1 maps to 0.3 to 1)
 //             adjustedProgress = 0.3 + ((localProgress - 0.7) / 0.3) * 0.7;
 //         }
-        
+
 //         // Apply easing for even smoother feel
 //         const easeProgress = adjustedProgress < 0.5 
 //             ? 2 * adjustedProgress * adjustedProgress 
 //             : 1 - Math.pow(-2 * adjustedProgress + 2, 2) / 2;
-        
+
 //         const isCurrent = index === currentIndex;
 //         const isNext = index === currentIndex + 1;
-        
+
 //         if (isCurrent) {
 //             // Current image: ultra smooth upward movement with scale
 //             const translateY = easeProgress * -350;
@@ -414,7 +414,7 @@
 //                         <div className="relative w-[500px] h-[550px] overflow-visible flex items-center justify-center">
 //                             {projects.map((project, index) => {
 //                                 const transform = getImageTransform(index);
-                                
+
 //                                 return (
 //                                     <div
 //                                         key={project.id}
@@ -629,7 +629,7 @@ const LatestWork = () => {
                     setCurrentIndex(newIndex);
                 },
             });
-            
+
             scrollTriggersRef.current.push(pinTrigger);
         }, 100);
 
@@ -648,7 +648,7 @@ const LatestWork = () => {
             };
 
             window.addEventListener('load', handleLoad);
-            
+
             const refreshTimer = setTimeout(() => {
                 ScrollTrigger.refresh();
             }, 500);
@@ -662,28 +662,24 @@ const LatestWork = () => {
 
     const currentProject = projects[currentIndex];
 
-    // Ultra smooth animation - no jerks, silk-like transitions
-
-
-
-
- const getImageTransform = (index: number) => {
+    // Ultra smooth animation with pause at center
+    const getImageTransform = (index: number) => {
         const totalProjects = projects.length;
         const progressPerProject = 1 / totalProjects;
         const projectStart = index * progressPerProject;
         const projectEnd = (index + 1) * progressPerProject;
-        
+
         // Very wide overlap for ultra smooth transitions
         const overlapStart = Math.max(0, projectStart - progressPerProject * 0.6);
         const overlapEnd = projectEnd;
-        
+
         let localProgress = 0;
         if (scrollProgress >= overlapStart && scrollProgress <= overlapEnd) {
             localProgress = (scrollProgress - overlapStart) / (overlapEnd - overlapStart);
         } else if (scrollProgress > overlapEnd) {
             localProgress = 1;
         }
-        
+
         // Add pause in center - image stays stable for middle portion
         let adjustedProgress = localProgress;
         if (localProgress < 0.3) {
@@ -696,15 +692,15 @@ const LatestWork = () => {
             // Going up phase (0.7 to 1 maps to 0.3 to 1)
             adjustedProgress = 0.3 + ((localProgress - 0.7) / 0.3) * 0.7;
         }
-        
+
         // Apply easing for even smoother feel
-        const easeProgress = adjustedProgress < 0.5 
-            ? 2 * adjustedProgress * adjustedProgress 
+        const easeProgress = adjustedProgress < 0.5
+            ? 2 * adjustedProgress * adjustedProgress
             : 1 - Math.pow(-2 * adjustedProgress + 2, 2) / 2;
-        
+
         const isCurrent = index === currentIndex;
         const isNext = index === currentIndex + 1;
-        
+
         if (isCurrent) {
             // Current image: ultra smooth upward movement with scale
             const translateY = easeProgress * -350;
@@ -805,8 +801,8 @@ const LatestWork = () => {
 
                 <div className="space-y-20">
                     {projects.map((project, idx) => (
-                        <div 
-                            key={project.id} 
+                        <div
+                            key={project.id}
                             className="space-y-6 animate-fade-in-up"
                             style={{ animationDelay: `${idx * 0.2}s` }}
                         >
@@ -849,22 +845,22 @@ const LatestWork = () => {
     // Desktop Scroll View with smooth image transitions
     return (
         <div className="w-full bg-black">
-                        <h2 className="text-7xl mb-4 text-center font-bold text-white">
-                            LATEST WORK
-                        </h2>
+            
             <div
                 ref={containerRef}
                 className="w-full h-screen bg-black overflow-hidden relative"
             >
-                        
-                <div className="h-screen flex flex-col justify-center px-0">
-                    {/* <div className="mb-12 mt-10">
-                       
-                    </div> */}
 
-                    <div className="grid grid-cols-2 gap-12 items-center px-2">
+                <div className="h-screen flex flex-col justify-center px-0">
+                    <div className="mb-8 mt-10">
+                       <h2 className="text-7xl mb-4 text-center font-bold text-white">
+                   LATEST WORK
+                  </h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-12  items-center px-2">
                         {/* Left Side - Text Content - stays in place, smaller container */}
-                        <div className="space-y-8">
+                        <div className="space-y-6">
                             {/* Number */}
                             <div className="relative h-40 overflow-visible">
                                 {projects.map((project, index) => (
@@ -873,10 +869,10 @@ const LatestWork = () => {
                                         className="text-9xl pl-4 pt-4 font-bold text-gray-400 absolute top-0 left-0"
                                         style={{
                                             opacity: currentIndex === index ? 1 : 0,
-                                            transform: currentIndex === index 
-                                                ? 'translateY(0) scale(1)' 
-                                                : currentIndex > index 
-                                                    ? 'translateY(-80px) scale(0.9)' 
+                                            transform: currentIndex === index
+                                                ? 'translateY(0) scale(1)'
+                                                : currentIndex > index
+                                                    ? 'translateY(-80px) scale(0.9)'
                                                     : 'translateY(120px) scale(0.9)',
                                             transition: 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
                                         }}
@@ -889,10 +885,10 @@ const LatestWork = () => {
                             {/* Names List */}
                             <div className="space-y-2">
                                 {currentProject.names.map((name, i) => (
-                                    <div 
-                                        key={i} 
+                                    <div
+                                        key={i}
                                         className="flex items-center gap-2 text-sm animate-slide-in-left"
-                                        style={{ 
+                                        style={{
                                             animationDelay: `${i * 0.1}s`
                                         }}
                                     >
@@ -910,17 +906,17 @@ const LatestWork = () => {
                             </div>
 
                             {/* Title and Description */}
-                            <div className="space-y-3 relative h-36 overflow-visible">
+                            <div className="space-y-1 relative h-64 overflow-visible">
                                 {projects.map((project, index) => (
                                     <div
                                         key={project.id}
-                                        className="absolute top-0 left-0 pl-6 pt-20 space-y-3"
+                                        className="absolute top-0 left-0 pl-6 pt-16 space-y-3"
                                         style={{
                                             opacity: currentIndex === index ? 1 : 0,
-                                            transform: currentIndex === index 
-                                                ? 'translateY(0) scale(1)' 
-                                                : currentIndex > index 
-                                                    ? 'translateY(-60px) scale(0.95)' 
+                                            transform: currentIndex === index
+                                                ? 'translateY(0) scale(1)'
+                                                : currentIndex > index
+                                                    ? 'translateY(-60px) scale(0.95)'
                                                     : 'translateY(100px) scale(0.95)',
                                             transition: 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
                                         }}
@@ -940,7 +936,7 @@ const LatestWork = () => {
                         <div className="relative w-[500px] h-[550px] overflow-visible flex items-center justify-center">
                             {projects.map((project, index) => {
                                 const transform = getImageTransform(index);
-                                
+
                                 return (
                                     <div
                                         key={project.id}
