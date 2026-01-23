@@ -57,12 +57,12 @@ export default function HowWeWork() {
 					x: '0%',
 				},
 				{
-					x: () => `-${(steps.length - 1) * 24}%`,
+					x: () => `-${(steps.length - 1) * 17}%`,
 					ease: 'none',
 					scrollTrigger: {
 						trigger: section,
 						start: 'top top',
-						end: () => `+=${steps.length * 1000}`,
+						end: () => `+=${steps.length * 900}`,
 						scrub: 1,
 						invalidateOnRefresh: true,
 					},
@@ -121,8 +121,8 @@ export default function HowWeWork() {
 					{/* Right Side - Cards in horizontal row */}
 					<div className="flex items-center h-screen">
 						{/* Step 1 - Discovery Phase */}
-						<div className="step-card w-[30vw] max-h-screen flex items-center justify-center flex-shrink-0">
-							<div className="border-2 border-gray-700 p-10 pl-10 pr-20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+						<div className="step-card w-[25vw] max-h-screen flex items-center justify-center flex-shrink-0">
+							<div className="border-2 border-gray-800 p-10 pl-10 pr-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-gray-400">STEP 1</span>
 									<span className="text-white text-5xl">.</span>
@@ -141,8 +141,8 @@ export default function HowWeWork() {
 						</div>
 
 						{/* Step 2 - Project Kickoff */}
-						<div className="step-card w-[30vw] min-h-screen flex items-center justify-center flex-shrink-0">
-							<div className="border-2 border-gray-700 p-10 pl-10 pr-20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+						<div className="step-card w-[25vw] min-h-screen flex items-center justify-center flex-shrink-0">
+							<div className="border-2 border-gray-800 p-10 pl-10 pr-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 2</span>
 									<span className="text-white text-5xl">.</span>
@@ -161,8 +161,8 @@ export default function HowWeWork() {
 						</div>
 
 						{/* Step 3 - Receive & Refine */}
-						<div className="step-card w-[30vw] min-h-screen flex items-center justify-center flex-shrink-0">
-							<div className="border-2 border-gray-700 p-10 pl-10 pr-20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+						<div className="step-card w-[25vw] min-h-screen flex items-center justify-center flex-shrink-0">
+							<div className="border-2 border-gray-800 p-10 pl-10 pr-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 3</span>
 									<span className="text-white text-5xl">.</span>
@@ -180,15 +180,15 @@ export default function HowWeWork() {
 						</div>
 
 						{/* Step 4 - Continue & Grow */}
-						<div className="step-card w-[30vw] min-h-screen flex items-center justify-center flex-shrink-0">
-							<div className="border-2 border-gray-700 p-10 pl-10 pr-20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+						<div className="step-card w-[25vw] min-h-screen flex items-center justify-center flex-shrink-0">
+							<div className="border-2 border-gray-800 p-10 pl-10 pr-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 4</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
 								<h3 className="text-5xl font-bold mb-6 mt-40 text-white leading-tight transition-colors duration-300 hover:text-purple-400">
-									Conti. &<br />
-									Grow
+									Continue<br />
+									& Grow
 								</h3>
 								<p className="text-gray-400 text-xl leading-relaxed">
 									Launching your project and supporting ongoing growth
@@ -212,7 +212,7 @@ export default function HowWeWork() {
 					</h2>
 				</div>
 
-				<div className="space-y-8">
+				<div className="space-y-3">
 					<div className="border-gray-700 border-2 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/20">
 						<div className="mb-24">
 							<span className="text-2xl font-bold text-gray-400">STEP 1</span>
