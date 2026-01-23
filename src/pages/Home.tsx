@@ -7,7 +7,7 @@ import FAQSection from '@/components/home/FAQSection'
 import TestimonialScroll from '@/components/home/Testimonials'
 //import ProjectTimeline from '@/components/home/ProjectTimeline'
 import HowWeWork from '@/components/home/HowWeWork'
-//import UsVsOthers from '@/components/home/UsVsOthers'
+import UsVsOthers from '@/components/home/UsVsOthers'
 import LetsWork from '@/components/home/LatestWork'
 const Home = () => {
   return (
@@ -30,7 +30,7 @@ const Home = () => {
       </div>
       {/* <ProjectTimeline/> */}
       <HowWeWork />
-      {/* <UsVsOthers/> */}
+      <UsVsOthers/>
       <TestimonialScroll />
       <FAQSection />
       {/* <ProcessSection /> */}
