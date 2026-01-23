@@ -600,6 +600,7 @@ const LatestWork = () => {
     }, []);
 
     // Desktop scroll animation - smooth image transitions
+    // Desktop scroll animation - smooth image transitions
     useEffect(() => {
         if (isMobile || showAllProjects || !containerRef.current) return;
 
@@ -615,15 +616,18 @@ const LatestWork = () => {
             const pinTrigger = ScrollTrigger.create({
                 trigger: section,
                 start: 'top top',
-                end: () => `+=${projects.length * 800}`,  // Longer scroll for smoother transitions
+                end: () => `+=${projects.length * 1000}`,  // Extended scroll distance
                 pin: true,
-                scrub: 1.5,  // Higher value = smoother, slower transitions
+                scrub: 2,  // Smoother scrolling
                 anticipatePin: 1,
                 onUpdate: (self) => {
                     const progress = self.progress;
                     setScrollProgress(progress);
+                    
+                    // More precise index calculation to match scroll exactly
+                    const exactProgress = progress * projects.length;
                     const newIndex = Math.min(
-                        Math.floor(progress * projects.length),
+                        Math.floor(exactProgress),
                         projects.length - 1
                     );
                     setCurrentIndex(newIndex);
@@ -727,10 +731,10 @@ const LatestWork = () => {
     // Full Page Grid View
     if (showAllProjects) {
         return (
-            <div className="w-full min-h-screen bg-black py-12 md:py-20 px-6 md:px-12">
+            <div className="w-full min-h-screen bg-black mt-0 py-12 sm:py-2 z-[80] md:py-0 top-0 px-6 md:px-12">
                 <div className="mb-12 md:mb-16">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white animate-fade-in-up">
-                        OUR WORKS
+                    <h2 className="text-4xl md:text-6xl text-center font-bold text-white animate-fade-in-up">
+                        OUR LATEST WORKS
                     </h2>
                 </div>
 
@@ -738,7 +742,7 @@ const LatestWork = () => {
                     {allProjects.map((project, idx) => (
                         <div
                             key={project.id}
-                            className="group sm:mb-0 mb-8 space-y-2 sm:space-y-4 md:space-y-6 transition-all duration-500 hover:scale-105 animate-fade-in-up"
+                            className="group sm:mb-0 mb-8 space-y-2 sm:space-y-4 md:space-y-4 transition-all duration-500 hover:scale-105 animate-fade-in-up"
                             style={{ animationDelay: `${idx * 0.1}s` }}
                         >
                             <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden">
@@ -766,7 +770,7 @@ const LatestWork = () => {
                                         {project.title}
                                     </h4>
                                 </div>
-                                <p className="text-gray-400 text-sm  md:text-lg leading-relaxed transition-colors duration-300 group-hover:text-gray-300">
+                                <p className="text-gray-400 text-sm pb-4  md:text-lg leading-relaxed transition-colors duration-300 group-hover:text-gray-300">
                                     {project.subtitle}
                                 </p>
                             </div>
@@ -777,12 +781,12 @@ const LatestWork = () => {
                 <div className="flex justify-center mt-12 md:mt-16">
                     <button
                         onClick={() => setShowAllProjects(false)}
-                        className="group relative px-8 md:px-12 py-3 md:py-4 bg-transparent border-2 border-gray-700 text-white text-sm md:text-base font-semibold overflow-hidden hover:border-red-500 transition-all duration-500 rounded-full"
+                        className="group relative px-8 md:px-12 py-3 md:py-4 bg-transparent border-2 border-gray-700 text-white text-sm md:text-base font-semibold overflow-hidden hover:border-white transition-all duration-500 rounded-full"
                     >
                         <span className="relative z-10 flex items-center gap-3">
                             BACK TO SCROLL VIEW
                         </span>
-                        <div className="absolute inset-0 bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full"></div>
+                        <div className="absolute inset-0 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full"></div>
                     </button>
                 </div>
             </div>
