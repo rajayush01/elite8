@@ -5,7 +5,7 @@ import Clients from '@/components/home/Clients'
 //import ProcessSection from '@/components/home/ProcessSection'
 import FAQSection from '@/components/home/FAQSection'
 import TestimonialScroll from '@/components/home/Testimonials'
-import ProjectTimeline from '@/components/home/ProjectTimeline'
+//import ProjectTimeline from '@/components/home/ProjectTimeline'
 import HowWeWork from '@/components/home/HowWeWork'
 //import UsVsOthers from '@/components/home/UsVsOthers'
 import LetsWork from '@/components/home/LatestWork'
@@ -19,7 +19,7 @@ const Home = () => {
         
         
       </div>
-      <HowWeWork />
+      
       
       {/* Show ServicesMobile on small screens, Services on md and above */}
       <div className="md:hidden">
@@ -28,7 +28,8 @@ const Home = () => {
       <div className="hidden md:block">
         <Services />
       </div>
-      <ProjectTimeline/>
+      {/* <ProjectTimeline/> */}
+      <HowWeWork />
       {/* <UsVsOthers/> */}
       <TestimonialScroll />
       <FAQSection />

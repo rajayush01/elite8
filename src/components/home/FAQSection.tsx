@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+ const [openIndex, setOpenIndex] = useState<number | null>(null);
+
 
   const faqs = [
     {
@@ -39,6 +40,7 @@ const FAQSection = () => {
   ];
 
   const toggleFAQ = (index: number) => {
+
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -78,7 +80,7 @@ const FAQSection = () => {
                       {/* Two horizontal lines that transform to X */}
                       {/* Top line */}
                       <div
-                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out origin-center ${
+                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-900 ease-in-out origin-center ${
                           openIndex === index 
                             ? 'rotate-45 translate-y-0' 
                             : '-translate-y-2'
@@ -86,7 +88,7 @@ const FAQSection = () => {
                       ></div>
                       {/* Bottom line */}
                       <div
-                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-300 ease-in-out origin-center ${
+                        className={`absolute top-1/2 left-0 w-8 h-0.5 bg-purple-400 transition-all duration-900 ease-in-out origin-center ${
                           openIndex === index 
                             ? '-rotate-45 translate-y-0' 
                             : 'translate-y-2'
@@ -96,7 +98,7 @@ const FAQSection = () => {
                   </div>
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  className={`overflow-hidden transition-all duration-700 ease-in-out ${
                     openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >

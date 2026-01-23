@@ -829,10 +829,10 @@ const LatestWork = () => {
                 <div className="flex justify-center mt-12">
                     <button
                         onClick={() => setShowAllProjects(true)}
-                        className="group relative rounded-full px-12 py-4 bg-transparent border-2 border-gray-700 text-red-500 text-base font-semibold overflow-hidden hover:border-red-500 transition-all duration-500"
+                        className="group relative rounded-full px-12 py-4 bg-transparent border-2 border-gray-700 text-white text-base font-semibold overflow-hidden hover:border-red-500 transition-all duration-500"
                     >
                         <span className="relative z-10">MORE PROJECTS</span>
-                        <div className="absolute inset-0 bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div className="absolute inset-0 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                         <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
                             MORE PROJECTS
                         </span>
@@ -980,10 +980,10 @@ const LatestWork = () => {
             <div className="flex justify-center py-16 bg-black">
                 <button
                     onClick={() => setShowAllProjects(true)}
-                    className="group relative px-16 py-5 bg-transparent border-2 border-gray-700 text-red-500 text-lg font-semibold overflow-hidden hover:border-red-500 transition-all duration-500 rounded-full hover:scale-105"
+                    className="group relative px-16 py-5 bg-transparent border-2 border-gray-700 text-white text-lg font-semibold overflow-hidden hover:border-white transition-all duration-500 rounded-full hover:scale-105"
                 >
                     <span className="relative z-10">MORE PROJECTS</span>
-                    <div className="absolute inset-0 bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full"></div>
+                    <div className="absolute inset-0 bg-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full"></div>
                     <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
                         MORE PROJECTS
                     </span>
