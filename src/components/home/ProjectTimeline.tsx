@@ -15,10 +15,10 @@ export default function ProjectTimeline() {
 		const checkDesktop = () => {
 			setIsDesktop(window.innerWidth >= 768);
 		};
-		
+
 		checkDesktop();
 		window.addEventListener('resize', checkDesktop);
-		
+
 		return () => window.removeEventListener('resize', checkDesktop);
 	}, []);
 
@@ -66,9 +66,9 @@ export default function ProjectTimeline() {
 						scrub: 1,
 						invalidateOnRefresh: true,
 					},
-				}
+				},
 			).scrollTrigger;
-			
+
 			if (animationTrigger) {
 				scrollTriggersRef.current.push(animationTrigger);
 			}
@@ -89,7 +89,7 @@ export default function ProjectTimeline() {
 			};
 
 			window.addEventListener('load', handleLoad);
-			
+
 			const refreshTimer = setTimeout(() => {
 				ScrollTrigger.refresh();
 			}, 500);
@@ -107,21 +107,20 @@ export default function ProjectTimeline() {
 			<div ref={containerRef} className="hidden md:block w-full h-screen bg-black overflow-hidden relative">
 				<div ref={contentRef} className="absolute inset-0 flex">
 					{/* Left Side - Header Section */}
-					<div className="w-1/2 h-full flex items-start justify-start pl-16 pt-32 flex-shrink-0">
+					<div className="w-1/2 h-full flex items-start justify-start pl-16 pt-28 flex-shrink-0">
 						<div className="text-left">
 							<p className="text-purple-600 text-sm font-medium mb-4 tracking-wider uppercase">
 								STOCKED OPERATION ACROSS THE WORLD
 							</p>
 							<h1 className="text-6xl font-bold mb-4 text-white">
-								We have best 
+								We have best
 								<br />
-								team
-								
-								and best<br /> process
+								team and best
+								<br /> process
 							</h1>
 							<p className="text-gray-400 pt-4 text-lg max-w-md">
-								Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing.
-								Indulgence way everything joy.
+								Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise
+								blessing. Indulgence way everything joy.
 							</p>
 						</div>
 					</div>
@@ -130,15 +129,13 @@ export default function ProjectTimeline() {
 					<div className="flex items-center h-screen">
 						{/* Card 1 - Project Discovery Call */}
 						<div className="timeline-card w-[25vw] h-screen flex items-center justify-center flex-shrink-0">
-							<div className="bg-purple-900 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 max-w-sm">
-								<div className="mb-6">
+							<div className="bg-purple-900 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 w-80 h-[480px]">
+								<div className="mb-2">
 									<span className="text-3xl font-bold text-gray-400">1</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
-								<h3 className="font-bold text-2xl mb-40 text-white">
-									Project Discovery Call
-								</h3>
-								<p className="text-gray-300 mt-40 text-base leading-relaxed">
+								<h3 className="font-bold text-2xl mb-44 text-white">Project Discovery Call</h3>
+								<p className="text-gray-300 text-base leading-relaxed">
 									We start by understanding your business, goals, and target audience to define the
 									project scope.
 								</p>
@@ -147,14 +144,12 @@ export default function ProjectTimeline() {
 
 						{/* Card 2 - Strategy */}
 						<div className="timeline-card w-[25vw] h-screen flex items-center justify-center flex-shrink-0">
-							<div className="bg-gray-800 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 max-w-sm">
-								<div className="mb-6">
+							<div className="bg-gray-800 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 w-80 h-[480px]">
+								<div className="mb-2">
 									<span className="text-3xl font-bold text-white">2</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
-								<h3 className="font-bold text-2xl mb-48 text-white">
-									Strategy
-								</h3>
+								<h3 className="font-bold text-2xl mb-48 text-white">Strategy</h3>
 								<p className="text-gray-300 text-base leading-relaxed">
 									His defective nor convinced residence own. Connection has put impossible own
 									apartments boisterous.
@@ -164,15 +159,13 @@ export default function ProjectTimeline() {
 
 						{/* Card 3 - Design & Development */}
 						<div className="timeline-card w-[25vw] h-screen flex items-center justify-center flex-shrink-0">
-							<div className="bg-purple-900 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 max-w-sm">
-								<div className="mb-6">
+							<div className="bg-purple-900 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 w-80 h-[480px]">
+								<div className="mb-2">
 									<span className="text-3xl font-bold text-white">3</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
-								<h3 className="font-bold text-2xl mb-44 text-white">
-									Design & Development
-								</h3>
-								<p className="text-gray-300 text-base mb-4 leading-relaxed">
+								<h3 className="font-bold text-2xl mb-44 text-white">Design & Development</h3>
+								<p className="text-gray-300 text-base leading-relaxed">
 									Our team creates stunning designs and builds robust, scalable solutions.
 								</p>
 							</div>
@@ -180,15 +173,13 @@ export default function ProjectTimeline() {
 
 						{/* Card 4 - Launch & Support */}
 						<div className="timeline-card w-[25vw] h-screen flex items-center justify-center flex-shrink-0">
-							<div className="bg-gray-800 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 max-w-sm">
-								<div className="mb-6">
+							<div className="bg-gray-800 rounded-lg p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/40 w-80 h-[480px]">
+								<div className="mb-2">
 									<span className="text-3xl font-bold text-white">4</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
-								<h3 className="font-bold text-2xl mb-52 text-white">
-									Launch & Support
-								</h3>
-								<p className="text-gray-300 text-base mb-4  leading-relaxed">
+								<h3 className="font-bold text-2xl mb-48 text-white">Launch & Support</h3>
+								<p className="text-gray-300 text-base leading-relaxed">
 									We ensure a smooth launch and provide ongoing support to help you succeed.
 								</p>
 							</div>
@@ -203,11 +194,7 @@ export default function ProjectTimeline() {
 					<p className="text-purple-600 text-xs font-medium mb-3 tracking-wider uppercase">
 						STOCKED OPERATION ACROSS THE WORLD
 					</p>
-					<h1 className="text-3xl font-bold mb-3 text-white">
-						We have best team
-						
-						and best process
-					</h1>
+					<h1 className="text-3xl font-bold mb-3 text-white">We have best team and best process</h1>
 					<p className="text-gray-400 text-sm max-w-md mb-6">
 						Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing.
 						Indulgence way everything joy.
@@ -237,8 +224,8 @@ export default function ProjectTimeline() {
 						<div className="bg-gray-800 rounded-lg p-4 shadow-lg">
 							<h3 className="font-bold text-lg mb-2 text-white">Strategy</h3>
 							<p className="text-gray-400 text-sm">
-								His defective nor convinced residence own. Connection has put impossible own
-								apartments boisterous.
+								His defective nor convinced residence own. Connection has put impossible own apartments
+								boisterous.
 							</p>
 						</div>
 					</div>
@@ -269,12 +256,6 @@ export default function ProjectTimeline() {
 		</>
 	);
 }
-
-
-
-
-
-
 
 // import React from 'react';
 
