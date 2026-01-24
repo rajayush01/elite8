@@ -118,7 +118,7 @@ export default function ProjectsHeader() {
             <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-px h-6 bg-gradient-to-b from-transparent via-gray-700 to-gray-600 opacity-0 animate-slideInTop" />
             <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 w-px h-6 bg-gradient-to-t from-transparent via-gray-700 to-gray-600 opacity-0 animate-slideInBottom" />
 
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold font-serif mb-6 relative inline-block cursor-pointer select-none">
+            <h2 className="text-3xl md:text-8xl lg:text-9xl font-bold font-serif mb-6 relative inline-block cursor-pointer select-none">
               {/* Main text */}
               <span
                 className="relative transition-all duration-500"
