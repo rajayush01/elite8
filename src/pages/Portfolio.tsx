@@ -1,39 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import img1 from '../assets/img1.avif';
 import img from '@/assets/try.jpg';
-import PortfolioMobile from './PortfolioMobile';
-import StatsSection from '@/components/layout/StatSection';
-import img10 from '@/assets/bharatonesty.png';
-import img2 from '@/assets/doctor.png';
-import img3 from '@/assets/lets.png';
-import img4 from '@/assets/ib1.png';
-import img5 from '@/assets/nymara1.png';
-import img8 from '@/assets/temple1.png';
-import img7 from '@/assets/milk.png';
-import img9 from '@/assets/photography.png';
+import ProjectsHeader from '@/components/ui/ProjectHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HorizontalScrollSnap() {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
-
-	// Handle responsive resize
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 640);
-		};
-
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
-
 	const containerRef = useRef<HTMLDivElement>(null);
-	const words = ['together.', 'brands.', 'products.', 'designs.', 'ideas.'];
-	const [currentWordIndex, setCurrentWordIndex] = useState(0);
 	const [currentText, setCurrentText] = useState('');
 	const [isDeleting, setIsDeleting] = useState(false);
+	const words = ['together.', 'brands.', 'products.', 'designs.', 'ideas.'];
+	const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
 	// Typing effect
 	useEffect(() => {
@@ -62,288 +40,441 @@ export default function HorizontalScrollSnap() {
 	}, [currentText, isDeleting, currentWordIndex, words]);
 
 	useEffect(() => {
-		window.scrollTo(0, 0);
-		if (window.history.scrollRestoration) {
-			window.history.scrollRestoration = 'manual';
-		}
-	}, []);
-
-	// Horizontal scroll animation
-	useEffect(() => {
 		if (!containerRef.current) return;
 
 		const panels = containerRef.current.querySelectorAll('.panel');
 
-		// Main horizontal scroll
-		const animation = gsap.to(panels, {
-			xPercent: -100 * (panels.length - 1),
-			ease: 'none',
-			scrollTrigger: {
-				trigger: containerRef.current,
-				pin: true,
-				scrub: 0.5,
-				start: 'top top',
-				end: () => `+=${panels.length * 1000}`,
-			},
-		});
-
-		// Animate text elements in each panel
-		panels.forEach((panel, index) => {
-			if (index === 0) return; // Skip first panel (hero)
-
-			const textElements = panel.querySelectorAll('.animate-slide');
-
-			textElements.forEach((element, i) => {
-				gsap.fromTo(
-					element,
-					{
-						x: 100,
-						opacity: 0,
-					},
-					{
-						x: 0,
-						opacity: 1,
-						duration: 1,
-						ease: 'power2.out',
-						scrollTrigger: {
-							trigger: panel,
-							containerAnimation: animation,
-							start: 'left center',
-							end: 'center center',
-							scrub: 0.5,
-							toggleActions: 'play none none reverse',
-						},
-						delay: i * 0.1,
-					},
-				);
-			});
-
-			// Animate images
-			const images = panel.querySelectorAll('img');
-			images.forEach((img) => {
-				gsap.fromTo(
-					img,
-					{
-						x: -80,
-						opacity: 0,
-						scale: 0.95,
-					},
-					{
-						x: 0,
-						opacity: 1,
-						scale: 1,
-						duration: 1.2,
-						ease: 'power2.out',
-						scrollTrigger: {
-							trigger: panel,
-							containerAnimation: animation,
-							start: 'left center',
-							end: 'center center',
-							scrub: 0.5,
-						},
-					},
-				);
+		const ctx = gsap.context(() => {
+			gsap.to(panels, {
+				xPercent: -100 * (panels.length - 1),
+				ease: 'none',
+				scrollTrigger: {
+					trigger: containerRef.current,
+					pin: true,
+					scrub: 1,
+					snap: 1 / (panels.length - 1),
+					start: 'top top',
+					end: '+=3500',
+				},
 			});
 		});
 
-		// Animate "Our Projects" text
-		const ourProjectsText = document.querySelector('.our-projects-text');
-		if (ourProjectsText) {
-			gsap.fromTo(
-				ourProjectsText,
-				{
-					x: 150,
-					opacity: 0,
-				},
-				{
-					x: 0,
-					opacity: 1,
-					duration: 1.5,
-					ease: 'power2.out',
-					scrollTrigger: {
-						trigger: '.panel:nth-child(2)',
-						containerAnimation: animation,
-						start: 'left center',
-						end: 'center center',
-						scrub: 0.5,
-					},
-				},
-			);
-		}
-
-		return () => {
-			animation.kill();
-			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-		};
+		return () => ctx.revert();
 	}, []);
-
-	const projectData = [
-		{
-			category: 'BRANDING / IDENTITY',
-			title: 'Bharat Honesty',
-			description:
-				'A comprehensive branding initiative for Bharat Honesty, focusing on trust and transparency. We developed a modern identity system that communicates integrity while maintaining cultural relevance.',
-			image: img10,
-			color: '#1a1a2e',
-		},
-		{
-			category: 'HEALTHCARE / DIGITAL',
-			title: 'Dr. Vikas Bhalekar',
-			description:
-				'Revolutionizing healthcare communication through strategic digital transformation. We created an approachable yet professional brand that bridges the gap between medical expertise and patient care.',
-			image: img2,
-			color: '#0f3460',
-		},
-		{
-			category: 'EVENT / EXPERIENCE',
-			title: "Let's Taxify",
-			description:
-				'Building meaningful connections through immersive event experiences. Our strategy focused on creating memorable touchpoints that transform attendees into brand advocates.',
-			image: img3,
-			color: '#16213e',
-		},
-		{
-			category: 'TECHNOLOGY / INNOVATION',
-			title: 'IB Technology',
-			description:
-				'Empowering businesses through cutting-edge technology solutions. We positioned IB as a forward-thinking partner that simplifies complex technical challenges with elegant solutions.',
-			image: img4,
-			color: '#1a1a2e',
-		},
-		{
-			category: 'LUXURY / LIFESTYLE',
-			title: 'Nymara',
-			description:
-				'Crafting an exclusive luxury experience for Nymara. We developed a sophisticated brand language that speaks to discerning customers who appreciate timeless elegance and exceptional quality.',
-			image: img5,
-			color: '#2d4059',
-		},
-		{
-			category: 'CREATIVE / PHOTOGRAPHY',
-			title: 'Reclipse',
-			description:
-				'Elevating visual storytelling through innovative photography platforms. We created a digital ecosystem that showcases artistic vision while providing seamless client experiences.',
-			image: img9,
-			color: '#1a1a2e',
-		},
-		{
-			category: 'HERITAGE / CULTURE',
-			title: 'Nashville Temple',
-			description:
-				'Preserving cultural heritage through thoughtful restoration and modern documentation. Our approach balanced traditional values with contemporary presentation methods.',
-			image: img8,
-			color: '#0f3460',
-		},
-		{
-			category: 'FOOD & BEVERAGE',
-			title: 'Vyshnavi',
-			description:
-				'Reimagining traditional dairy products for modern consumers. We developed a farm-to-table narrative that emphasizes quality, sustainability, and authentic craftsmanship.',
-			image: img7,
-			color: '#16213e',
-		},
-	];
-
-	// Render mobile component for small screens
-	if (isMobile) {
-		return <PortfolioMobile />;
-	}
 
 	return (
 		<div id="root">
 			<div ref={containerRef} className="w-[600%] flex flex-nowrap bg-black">
-				{/* Hero Section */}
-				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 bg-black">
-					<div className="max-w-4xl mt-44 ml-28">
-						<h1 className="text-5xl md:text-8xl mb-8">
-							<span className="font-serif">Let's create</span>
-							<br />
-							<span className="font-['Brush_Script_MT',cursive] italic text-6xl md:text-8xl ml-32 md:ml-64">
-								{currentText}
-								<span className="animate-pulse">|</span>
-							</span>
-						</h1>
+				<div className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5">
+					<section className=" font-semibold text-2xl text-center text-white relative box-border p-2.5 ">
+						<div className="max-w-4xl mt-44">
+							<h1 className="text-5xl md:text-8xl mb-8">
+								<span className="font-serif">Let's create</span>
+								<br />
+								<span className="font-['Brush_Script_MT',cursive] italic text-6xl md:text-8xl">
+									{currentText}
+									<span className="animate-pulse">|</span>
+								</span>
+							</h1>
 
-						<p className="text-gray-400 text-lg md:text-xl max-w-2xl ml-auto">
-							We help businesses find their voice, shape their identity, and connect with their audience.{' '}
-							<span className="font-bold text-gray-700">Less talk. More craft.</span>
-						</p>
+							<p className="text-gray-400 text-lg md:text-xl max-w-2xl ml-32">
+								We help businesses find their voice, shape their identity, and connect with their
+								audience. <span className="font-bold text-gray-700">Less talk. More craft.</span>
+							</p>
 
-						<h1 className="-rotate-12 mt-20">
-							<span
-								className="font-serif italic text-6xl md:text-8xl md:text-[250px] ml-20"
-								style={{
-									backgroundImage: `url(${img})`,
-									backgroundSize: 'cover',
-									backgroundPosition: 'center',
-									backgroundClip: 'text',
-									WebkitBackgroundClip: 'text',
-									WebkitTextFillColor: 'transparent',
-									color: 'transparent',
-								}}
-							>
-								ELITE8
-							</span>
-						</h1>
-					</div>
-				</section>
-
-				{/* Our Projects Section */}
-				<section className="panel w-full h-screen flex justify-start items-center font-semibold text-2xl text-center text-white relative box-border -left-28">
-					<div className="flex flex-row justify-center items-center ml-40">
-						<div className="relative">
-							<img src={img1} alt="Project showcase" className="h-[800px] object-cover" />
-							<div className="our-projects-text absolute top-1/2 -translate-y-1/2 -right-[300px] text-8xl font-bold font-serif flex flex-col justify-center item-center">
-								<div>Our</div>
-								<div>Projects</div>
-							</div>
+							<h1 className="-rotate-12 mt-20">
+								<span
+									className="font-serif italic text-6xl md:text-8xl md:text-[250px]"
+									style={{
+										backgroundImage: `url(${img})`,
+										backgroundSize: 'cover',
+										backgroundPosition: 'center',
+										backgroundClip: 'text',
+										WebkitBackgroundClip: 'text',
+										WebkitTextFillColor: 'transparent',
+										color: 'transparent',
+									}}
+								>
+									ELITE8
+								</span>
+							</h1>
 						</div>
-					</div>
+					</section>
+				</div>
+
+
+				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 overflow-hidden">
+					<ProjectsHeader/>
 				</section>
 
-				{/* Project Case Studies */}
-				{projectData.map((project, idx) => (
-					<section
-						key={idx}
-						className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5"
-					>
-						<div className="flex flex-row justify-center items-center min-h-screen ">
-							<div className="flex flex-row items-center relative ml-80">
-								<div className=" bg-black p-16 flex flex-col justify-center -ml-32 relative z-10">
-									<div className="flex flex-col justify-center item-center w-full">
-										<img
-											src={project.image}
-											alt={project.title}
-											className="w-full h-auto object-cover rounded-lg"
-										/>
+				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 overflow-hidden">
+					<div className="max-w-7xl w-full px-8">
+						{/* Animated Header */}
+						<div className="mb-16 relative">
+							<h2 className="text-5xl md:text-7xl font-bold font-serif mb-4 relative inline-block">
+								<span
+									className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+								<span
+									className="relative"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										WebkitTextFillColor: 'transparent',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+							</h2>
+						</div>
+
+						{/* Project Showcase */}
+						<div className="grid md:grid-cols-2 gap-12 items-center">
+							{/* Project Image with Hover Effect */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#c82736] to-[#e77614] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<img
+										src={img}
+										alt="Featured Project"
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Brand Evolution</h3>
+											<p className="text-gray-300">Complete visual identity redesign</p>
+										</div>
 									</div>
+								</div>
+							</div>
 
-									<h1 className="animate-slide text-7xl font-serif mb-8 leading-tight">
-										{project.title.split(' ').map((word, i) => (
-											<React.Fragment key={i}>
-												{word}
-												{i < project.title.split(' ').length - 1 && <br />}
-											</React.Fragment>
-										))}
-									</h1>
-
-									<p className="animate-slide text-gray-600 text-lg mb-12 leading-relaxed">
-										{project.description}
-									</p>
-
-									<div className="animate-slide flex items-center">
-										<span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-										<span className="text-base font-semibold">Case Study</span>
+							{/* Project Video with Animated Border */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#8d3dae] to-[#28a92b] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<video
+										autoPlay
+										loop
+										muted
+										playsInline
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									>
+										<source
+											src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-34487-large.mp4"
+											type="video/mp4"
+										/>
+									</video>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Digital Experience</h3>
+											<p className="text-gray-300">Interactive web platform</p>
+										</div>
+									</div>
+									<div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+										<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+											<path
+												fillRule="evenodd"
+												d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
 									</div>
 								</div>
 							</div>
 						</div>
-					</section>
-				))}
 
-				<section className="panel w-full h-screen flex justify-start items-center font-semibold text-2xl text-center text-white relative box-border -left-28">
-					<div className="flex flex-row justify-center items-center">
-						<StatsSection />
+						{/* Animated Stats */}
+						<div className="mt-16 flex flex-col justify-center items-center">
+							<div>Description</div>
+						</div>
+					</div>
+				</section>
+
+				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 overflow-hidden">
+					<div className="max-w-7xl w-full px-8">
+						{/* Animated Header */}
+						<div className="mb-16 relative">
+							<h2 className="text-5xl md:text-7xl font-bold font-serif mb-4 relative inline-block">
+								<span
+									className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+								<span
+									className="relative"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										WebkitTextFillColor: 'transparent',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+							</h2>
+						</div>
+
+						{/* Project Showcase */}
+						<div className="grid md:grid-cols-2 gap-12 items-center">
+							{/* Project Image with Hover Effect */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#c82736] to-[#e77614] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<img
+										src={img}
+										alt="Featured Project"
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Brand Evolution</h3>
+											<p className="text-gray-300">Complete visual identity redesign</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{/* Project Video with Animated Border */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#8d3dae] to-[#28a92b] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<video
+										autoPlay
+										loop
+										muted
+										playsInline
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									>
+										<source
+											src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-34487-large.mp4"
+											type="video/mp4"
+										/>
+									</video>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Digital Experience</h3>
+											<p className="text-gray-300">Interactive web platform</p>
+										</div>
+									</div>
+									<div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+										<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+											<path
+												fillRule="evenodd"
+												d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{/* Animated Stats */}
+						<div className="mt-16 flex flex-col justify-center items-center">
+							<div>Title</div>
+							<div>Description</div>
+						</div>
+					</div>
+				</section>
+
+				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 overflow-hidden">
+					<div className="max-w-7xl w-full px-8">
+						{/* Animated Header */}
+						<div className="mb-16 relative">
+							<h2 className="text-5xl md:text-7xl font-bold font-serif mb-4 relative inline-block">
+								<span
+									className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+								<span
+									className="relative"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										WebkitTextFillColor: 'transparent',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+							</h2>
+						</div>
+
+						{/* Project Showcase */}
+						<div className="grid md:grid-cols-2 gap-12 items-center">
+							{/* Project Image with Hover Effect */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#c82736] to-[#e77614] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<img
+										src={img}
+										alt="Featured Project"
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Brand Evolution</h3>
+											<p className="text-gray-300">Complete visual identity redesign</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{/* Project Video with Animated Border */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#8d3dae] to-[#28a92b] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<video
+										autoPlay
+										loop
+										muted
+										playsInline
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									>
+										<source
+											src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-34487-large.mp4"
+											type="video/mp4"
+										/>
+									</video>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Digital Experience</h3>
+											<p className="text-gray-300">Interactive web platform</p>
+										</div>
+									</div>
+									<div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+										<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+											<path
+												fillRule="evenodd"
+												d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{/* Animated Stats */}
+						<div className="mt-16 flex flex-col justify-center items-center">
+							<div>Title</div>
+							<div>Description</div>
+						</div>
+					</div>
+				</section>
+
+				<section className="panel w-full h-screen flex justify-center items-center font-semibold text-2xl text-center text-white relative box-border p-2.5 overflow-hidden">
+					<div className="max-w-7xl w-full px-8">
+						{/* Animated Header */}
+						<div className="mb-16 relative">
+							<h2 className="text-5xl md:text-7xl font-bold font-serif mb-4 relative inline-block">
+								<span
+									className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+								<span
+									className="relative"
+									style={{
+										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+										WebkitBackgroundClip: 'text',
+										WebkitTextFillColor: 'transparent',
+										backgroundClip: 'text',
+									}}
+								>
+									TITLE
+								</span>
+							</h2>
+						</div>
+
+						{/* Project Showcase */}
+						<div className="grid md:grid-cols-2 gap-12 items-center">
+							{/* Project Image with Hover Effect */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#c82736] to-[#e77614] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<img
+										src={img}
+										alt="Featured Project"
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Brand Evolution</h3>
+											<p className="text-gray-300">Complete visual identity redesign</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{/* Project Video with Animated Border */}
+							<div className="relative group cursor-pointer">
+								<div className="absolute inset-0 bg-gradient-to-r from-[#8d3dae] to-[#28a92b] rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
+								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
+									<video
+										autoPlay
+										loop
+										muted
+										playsInline
+										className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+									>
+										<source
+											src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-34487-large.mp4"
+											type="video/mp4"
+										/>
+									</video>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+											<h3 className="text-3xl font-bold mb-2">Digital Experience</h3>
+											<p className="text-gray-300">Interactive web platform</p>
+										</div>
+									</div>
+									<div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+										<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+											<path
+												fillRule="evenodd"
+												d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{/* Animated Stats */}
+						<div className="mt-16 flex flex-col justify-center items-center">
+							<div>Title</div>
+							<div>Description</div>
+						</div>
 					</div>
 				</section>
 			</div>
