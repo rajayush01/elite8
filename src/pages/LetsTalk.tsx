@@ -86,23 +86,23 @@ const ContactSection = () => {
 							<ul className="space-y-0.5 text-xs sm:text-sm">
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">AI tools built for scale</span>
+									<span className="leading-relaxed">Scalable websites, web apps, and mobile applications</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Real-time optimization</span>
+									<span className="leading-relaxed">ERP and custom business platforms</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Scalable global setup</span>
+									<span className="leading-relaxed">AI-assisted tools and intelligent automation</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Automated resource handling</span>
+									<span className="leading-relaxed">Real-time monitoring, analytics, and optimization</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Around-the-clock support</span>
+									<span className="leading-relaxed">Secure, global-ready systems with dedicated support</span>
 								</li>
 							</ul>
 						</div>

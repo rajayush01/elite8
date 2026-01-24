@@ -1,5 +1,10 @@
 import { useState } from 'react';
-
+import ERPpic from '../../assets/ERP1.png';
+import ecommercepic from '../../assets/ecommerce.png'
+import webd from '../../assets/webd.png'
+import SEO from '../../assets/mobile.png'
+import software from '../../assets/software.png'
+import business from '../../assets/business.png'
 interface Service {
   number: string;
   title: string;
@@ -15,8 +20,7 @@ const services: Service[] = [
     description:
       'End-to-end ERP systems designed for schools, colleges, hospitals, and organizations to manage operations, data, and reporting from a single platform.',
     tags: ['School / College ERP', 'Billing & Invoicing', 'Attendance & Fees', 'Reports & Analytics'],
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop'
+    image:ERPpic
   },
   {
     number: '02',
@@ -24,8 +28,7 @@ const services: Service[] = [
     description:
       'We design and develop high-performance business websites focused on speed, usability, and conversions, with ongoing maintenance for long-term reliability.',
     tags: ['UI/UX Design', 'Custom Development', 'Performance Optimization', 'Ongoing Maintenance'],
-    image:
-      'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=600&fit=crop'
+    image:webd
   },
   {
     number: '03',
@@ -33,8 +36,7 @@ const services: Service[] = [
     description:
       'Custom e-commerce platforms with seamless payments, inventory control, order management, and scalable backend systems.',
     tags: ['Custom Storefronts', 'Payment Gateway Integration', 'Inventory & Order Management', 'Admin Dashboard'],
-    image:
-      'https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?w=800&h=600&fit=crop'
+    image:ecommercepic
   },
   {
     number: '04',
@@ -42,8 +44,7 @@ const services: Service[] = [
     description:
       'We design and build secure, scalable mobile applications tailored to business workflows, with seamless performance across devices.',
     tags: ['Android & iOS Apps', 'Web Applications', 'Role-based Access', 'API & System Integration'],
-    image:
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
+    image:SEO
   },
   {
     number: '05',
@@ -51,8 +52,7 @@ const services: Service[] = [
     description:
       'We build secure, scalable web applications and admin dashboards to manage operations, users, data, and workflows efficiently.',
     tags: ['Admin Panels', 'Role-based Access', 'API Integration', 'Secure Architecture'],
-    image:
-      'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop'
+    image:business
   },
   {
     number: '06',
@@ -60,36 +60,36 @@ const services: Service[] = [
     description:
       'Tailor-made software solutions built to automate processes, reduce manual work, and solve specific business problems.',
     tags: ['Automation Tools', 'Internal Systems', 'Custom Portals', 'Scalable Architecture'],
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop'
-  },
-  {
-    number: '07',
-    title: 'ERP Systems',
-    description:
-      'End-to-end ERP solutions to manage operations, finance, HR, inventory, and reporting from a single unified platform.',
-    tags: ['Enterprise Systems', 'Role Management', 'Analytics', 'Process Automation'],
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
-  },
-  {
-    number: '08',
-    title: 'Booking Systems',
-    description:
-      'Custom booking and appointment systems with real-time availability, automated confirmations, and admin dashboards.',
-    tags: ['Appointment Booking', 'Calendar Integration', 'Payment Support', 'Admin Dashboard'],
-    image:
-      'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=600&fit=crop'
-  },
-  {
-    number: '09',
-    title: 'Invoice Generator',
-    description:
-      'Automated invoice generation systems with GST support, PDF export, client management, and payment tracking.',
-    tags: ['Invoice Automation', 'GST Support', 'PDF Export', 'Payment Tracking'],
-    image:
-      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop'
+    image: software
   }
+  // ,
+  // {
+  //   number: '07',
+  //   title: 'ERP Systems',
+  //   description:
+  //     'End-to-end ERP solutions to manage operations, finance, HR, inventory, and reporting from a single unified platform.',
+  //   tags: ['Enterprise Systems', 'Role Management', 'Analytics', 'Process Automation'],
+  //   image:
+  //     'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
+  // },
+  // {
+  //   number: '08',
+  //   title: 'Booking Systems',
+  //   description:
+  //     'Custom booking and appointment systems with real-time availability, automated confirmations, and admin dashboards.',
+  //   tags: ['Appointment Booking', 'Calendar Integration', 'Payment Support', 'Admin Dashboard'],
+  //   image:
+  //     'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=600&fit=crop'
+  // },
+  // {
+  //   number: '09',
+  //   title: 'Invoice Generator',
+  //   description:
+  //     'Automated invoice generation systems with GST support, PDF export, client management, and payment tracking.',
+  //   tags: ['Invoice Automation', 'GST Support', 'PDF Export', 'Payment Tracking'],
+  //   image:
+  //     'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop'
+  // }
 ];
 
 export default function ServicesMobile() {

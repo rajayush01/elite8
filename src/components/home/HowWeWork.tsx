@@ -125,7 +125,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 						<div className="step-card w-[25vw] h-[80vh] flex items-center justify-center flex-shrink-0">
 							<div className="border-2 border-gray-800 py-10 px-5 h-full w-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
-									<span className="text-3xl font-bold text-gray-400">STEP 1</span>
+									<span className="text-3xl font-bold text-white">STEP 1</span>
 									<span className="text-white text-5xl">.</span>
 								</div>
 								<div className="flex-1 flex flex-col justify-end">

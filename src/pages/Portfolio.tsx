@@ -3,11 +3,18 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img from '@/assets/try.jpg';
 import ProjectsHeader from '@/components/ui/ProjectHeader';
-import vid1 from '@/assets/drvikas.mp4';
-import vid2 from '@/assets/IB.mp4';
-import vid3 from '@/assets/nymara_demo.mp4';
-import vid4 from '@/assets/onesty_demo.mp4';
-import vid5 from '@/assets/temple.mp4';
+
+import vid1 from "@/assets/drvikas.mp4";
+import vid2 from "@/assets/IB.mp4";
+import vid3 from "@/assets/nymara_demo.mp4";
+import vid4 from "@/assets/onesty_demo.mp4";
+import vid5 from "@/assets/temple.mp4";
+import img1 from '.././assets/doctor.png'
+import img2 from '.././assets/ib1.png';
+import img3 from '.././assets/nymara1.png';
+import img4 from '.././assets/bharatonesty.png';
+import img5 from '.././assets/temple1.png';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,37 +27,35 @@ export default function HorizontalScrollSnap() {
 
 	const projects = [
 		{
-			title: 'Creative Vision',
-			description:
-				'Transforming ideas into reality through innovative design solutions that captivate and inspire audiences',
-			imageUrl: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80',
-			videoUrl: vid1,
+			title: "Dr. Vikas Bhalekar",
+			description: "Transforming ideas into reality through innovative design solutions that captivate and inspire audiences",
+			imageUrl: img1,
+			videoUrl: vid1
 		},
 		{
-			title: 'Brand Identity',
-			description:
-				'Crafting memorable experiences that resonate with your audience and build lasting connections',
-			imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
-			videoUrl: vid2,
+			title: "IB Technology",
+			description: "Crafting memorable experiences that resonate with your audience and build lasting connections",
+			imageUrl: img2,
+			videoUrl: vid2
 		},
 		{
-			title: 'Digital Innovation',
-			description: 'Leading the future of design with cutting-edge technology and creative excellence',
-			imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
-			videoUrl: vid3,
+			title: "NYMARA Jewells",
+			description: "Leading the future of design with cutting-edge technology and creative excellence",
+			imageUrl: img3,
+			videoUrl: vid3
 		},
 		{
-			title: 'Visual Storytelling',
-			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
-			imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-			videoUrl: vid4,
+			title: "BHARAT O'nesty",
+			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
+			imageUrl: img4,
+			videoUrl: vid4
 		},
 		{
-			title: 'Visual Storytelling',
-			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
-			imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-			videoUrl: vid5,
-		},
+			title: "Hanuman Temple",
+			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
+			imageUrl: img5,
+			videoUrl: vid5
+		}
 	];
 
 	// Typing effect

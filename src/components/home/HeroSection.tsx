@@ -187,12 +187,12 @@ const HeroSection = () => {
 
 
 
-	const handleScrollDown = () => {
-		window.scrollTo({
-			top: window.innerHeight * 1.1,
-			behavior: 'smooth'
-		});
-	};
+	// const handleScrollDown = () => {
+	// 	window.scrollTo({
+	// 		top: window.innerHeight * 1.1,
+	// 		behavior: 'smooth'
+	// 	});
+	// };
 
 	return (
 		<div ref={sectionRef} className="relative w-full" style={{ height: '300vh' }}>
@@ -314,7 +314,7 @@ const HeroSection = () => {
 							'opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s',
 					}}
 				>
-					<button
+					{/* <button
 						onClick={handleScrollDown}
 						className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group"
 					>
@@ -336,7 +336,7 @@ const HeroSection = () => {
 								strokeLinejoin="round"
 							/>
 						</svg>
-					</button>
+					</button> */}
 				</div>
 			</div>
 

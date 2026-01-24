@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Award, Users, Target, Zap, TrendingUp, Heart, Code, Rocket, Sparkles } from 'lucide-react';
-
+import img4 from '../assets/elite8digital-nav.png';
 type Particle = {
   id: number;
   x: number;
@@ -199,15 +199,14 @@ const handleMouseMove = (e: MouseEvent) => {
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-            <div className="relative group order-2 md:order-1">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl sm:rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" style={{ animation: 'pulse-glow 2s infinite' }}></div>
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
-                alt="Team collaboration"
-                className="rounded-2xl sm:rounded-3xl shadow-2xl relative z-10 w-full transform group-hover:scale-105 transition-transform duration-500"
-              />
+            <div className="relative order-2 md:order-1 bg-white rounded-3xl min-h-[300px] md:min-h-[520px] flex items-center justify-center">
+            <img 
+              src={img4}
+              alt="Team collaboration"
+              className="w-64 md:w-72 lg:w-80 rounded-2xl pr-8 transform group-hover:scale-105 transition-transform duration-500"
+            />
             </div>
+
             
             <div className="order-1 md:order-2">
               <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6">
@@ -263,8 +262,8 @@ const handleMouseMove = (e: MouseEvent) => {
                       key={i} 
                       className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-all duration-300 group"
                       style={{ 
-                        animation: `float ${3 + i}s infinite ease-in-out`,
-                        animationDelay: `${i * 0.3}s`
+                        animation: `float ${8 + i}s infinite ease-in-out`,
+                        animationDelay: `${i * 0.8}s`
                       }}
                     >
                       <div className="flex-shrink-0">
