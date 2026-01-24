@@ -3,6 +3,13 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img from '@/assets/try.jpg';
 import ProjectsHeader from '@/components/ui/ProjectHeader';
+import vid1 from "@/assets/drvikas.mp4";
+import vid2 from "@/assets/IB.mp4";
+import vid3 from "@/assets/nymara_demo.mp4";
+import vid4 from "@/assets/onesty_demo.mp4";
+import vid5 from "@/assets/temple.mp4";
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,25 +25,31 @@ export default function HorizontalScrollSnap() {
 			title: "Creative Vision",
 			description: "Transforming ideas into reality through innovative design solutions that captivate and inspire audiences",
 			imageUrl: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
-			videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-34487-large.mp4"
+			videoUrl: vid1
 		},
 		{
 			title: "Brand Identity",
 			description: "Crafting memorable experiences that resonate with your audience and build lasting connections",
 			imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-			videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-water-background-30379-large.mp4"
+			videoUrl: vid2
 		},
 		{
 			title: "Digital Innovation",
 			description: "Leading the future of design with cutting-edge technology and creative excellence",
 			imageUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-			videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-colorful-ink-in-water-3236-large.mp4"
+			videoUrl: vid3
 		},
 		{
 			title: "Visual Storytelling",
 			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
 			imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-			videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-waves-of-blue-particles-25770-large.mp4"
+			videoUrl: vid4
+		},
+		{
+			title: "Visual Storytelling",
+			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
+			imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+			videoUrl: vid5
 		}
 	];
 
