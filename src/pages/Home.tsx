@@ -16,10 +16,7 @@ const Home = () => {
       <LetsWork />
       <div className="flex justify-center items-center py-16">
         <Clients />
-        
-        
       </div>
-      
       
       {/* Show ServicesMobile on small screens, Services on md and above */}
       <div className="md:hidden">

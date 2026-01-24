@@ -11,46 +11,46 @@ interface Service {
 const services: Service[] = [
   {
     number: '01',
-    title: 'Custom Website Design, Development & Maintenance',
+    title: 'ERP Solutions',
     description:
-      'We design tailored websites with modern aesthetics, solid development, and continuous maintenance to ensure long-term performance and reliability.',
-    tags: ['UI/UX Design', 'Custom Development', 'Website Maintenance', 'Performance Optimization'],
+      'End-to-end ERP systems designed for schools, colleges, hospitals, and organizations to manage operations, data, and reporting from a single platform.',
+    tags: ['School / College ERP', 'Billing & Invoicing', 'Attendance & Fees', 'Reports & Analytics'],
     image:
       'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop'
   },
   {
     number: '02',
-    title: 'SEO Optimization',
+    title: 'Custom Website Design, Development & Maintenance',
     description:
-      'We enhance your online visibility through advanced SEO strategies, keyword targeting, and site performance optimization to help your business rank higher.',
-    tags: ['On-Page SEO', 'Keyword Research', 'Technical SEO', 'Performance Optimization'],
+      'We design and develop high-performance business websites focused on speed, usability, and conversions, with ongoing maintenance for long-term reliability.',
+    tags: ['UI/UX Design', 'Custom Development', 'Performance Optimization', 'Ongoing Maintenance'],
     image:
       'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=600&fit=crop'
   },
   {
     number: '03',
-    title: 'E-commerce Solutions',
+    title: 'E-Commerce Solutions',
     description:
-      'Complete online store development with secure payment integration, inventory management, and a smooth shopping experience that drives conversions.',
-    tags: ['Online Store', 'Payment Gateway', 'Inventory Management', 'Checkout Flow'],
+      'Custom e-commerce platforms with seamless payments, inventory control, order management, and scalable backend systems.',
+    tags: ['Custom Storefronts', 'Payment Gateway Integration', 'Inventory & Order Management', 'Admin Dashboard'],
     image:
       'https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?w=800&h=600&fit=crop'
   },
   {
     number: '04',
-    title: 'Mobile-Friendly Websites & Apps',
+    title: 'Mobile Application Development',
     description:
-      'Responsive and adaptive websites and applications that deliver seamless user experiences across all devices.',
-    tags: ['Responsive Design', 'Cross-Platform', 'Mobile UX', 'Performance'],
+      'We design and build secure, scalable mobile applications tailored to business workflows, with seamless performance across devices.',
+    tags: ['Android & iOS Apps', 'Web Applications', 'Role-based Access', 'API & System Integration'],
     image:
       'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
   },
   {
     number: '05',
-    title: 'Android & iOS App Development',
+    title: 'Business Web Applications & Dashboards',
     description:
-      'We build powerful, scalable, and intuitive mobile apps for Android and iOS using modern frameworks and robust backend integrations.',
-    tags: ['Android Apps', 'iOS Apps', 'API Integration', 'Scalable Architecture'],
+      'We build secure, scalable web applications and admin dashboards to manage operations, users, data, and workflows efficiently.',
+    tags: ['Admin Panels', 'Role-based Access', 'API Integration', 'Secure Architecture'],
     image:
       'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop'
   },
@@ -58,8 +58,8 @@ const services: Service[] = [
     number: '06',
     title: 'Custom Software Development',
     description:
-      'Tailored software solutions to optimize workflows, automate processes, and boost overall business efficiency.',
-    tags: ['Business Automation', 'Custom Tools', 'Workflow Systems', 'Scalable Software'],
+      'Tailor-made software solutions built to automate processes, reduce manual work, and solve specific business problems.',
+    tags: ['Automation Tools', 'Internal Systems', 'Custom Portals', 'Scalable Architecture'],
     image:
       'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop'
   },

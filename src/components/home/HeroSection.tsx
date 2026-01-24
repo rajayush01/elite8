@@ -154,7 +154,7 @@ const HeroSection = () => {
 	const videoOpacity = scrollProgress < 0.8 ? 1 : Math.max(0, 1 - (scrollProgress - 0.8) / 0.2);
 
 	// --- Text Reveal Logic - Character by Character with Opacity (Very Slow) ---
-	const text = 'We craft sleek, scalable websites, apps, and platforms — built to perform, designed to inspire, and made for everyone.';
+	const text = 'We craft scalable websites, applications, and platforms—engineered for performance and built to help businesses grow.';
 	const words = text.split(' ');
 
 	const getCharOpacity = (wordIndex: number, charIndexInWord: number): number => {

@@ -14,14 +14,14 @@ export default function UsVsOthers() {
   const [animateBars, setAnimateBars] = useState(false);
 
   const features = [
-    { name: '24/7 Customer Support', us: 100, others: 30, icon: Zap },
-    { name: 'Free Lifetime Updates', us: 100, others: 20, icon: Rocket },
-    { name: 'No Hidden Fees', us: 100, others: 25, icon: Shield },
-    { name: 'Advanced Analytics', us: 90, others: 65, icon: TrendingUp },
-    { name: 'Mobile App Access', us: 95, others: 70, icon: Sparkles },
-    { name: 'AI-Powered Insights', us: 100, others: 15, icon: Trophy },
-    { name: 'Custom Integrations', us: 90, others: 35, icon: Zap },
-    { name: 'Money-Back Guarantee', us: 100, others: 10, icon: Crown }
+    { name: 'Dedicated Customer Support', us: 90, others: 40, icon: Zap },
+    { name: 'Regular Updates & Improvements', us: 85, others: 30, icon: Rocket },
+    { name: 'Transparent Pricing', us: 95, others: 45, icon: Shield },
+    { name: 'Advanced Analytics & Reporting', us: 80, others: 60, icon: TrendingUp },
+    { name: 'Web & Mobile App Access', us: 85, others: 65, icon: Sparkles },
+    { name: 'Smart Data Insights', us: 75, others: 35, icon: Trophy },
+    { name: 'Custom Integrations', us: 90, others: 40, icon: Zap },
+    { name: 'Milestone-based delivery ', us: 95, others: 20, icon: Crown }
   ];
 
   useEffect(() => {

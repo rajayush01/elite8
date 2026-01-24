@@ -130,11 +130,10 @@ const [isDesktop, setIsDesktop] = useState(false);
 								</div>
 								<div className="flex-1 flex flex-col justify-end">
 									<h3 className="text-4xl font-bold mb-6 text-white leading-tight transition-colors duration-300">
-										Discovery
+										Discovery & Requirements
 									</h3>
 									<p className="text-gray-400 text-xl leading-relaxed">
-										We start by understanding your business, goals, and target audience to define
-										the project scope.
+										We understand your business model, users, and workflows to clearly define requirements, scope, and success metrics.
 									</p>
 								</div>
 							</div>
@@ -149,11 +148,11 @@ const [isDesktop, setIsDesktop] = useState(false);
 								</div>
 								<div className="flex-1 flex flex-col justify-end">
 									<h3 className="text-4xl font-bold mb-6 text-white leading-tight transition-colors duration-300">
-										Strategy
+										Solution Planning
 									</h3>
 									<p className="text-gray-400 text-xl leading-relaxed">
-										We develop a comprehensive strategy and roadmap to achieve your business
-										objectives.
+										We design the system architecture, technology stack, and execution roadmap aligned with your business goals.
+
 									</p>
 								</div>
 							</div>
@@ -168,10 +167,10 @@ const [isDesktop, setIsDesktop] = useState(false);
 								</div>
 								<div className="flex-1 flex flex-col justify-end">
 									<h3 className="text-4xl font-bold mb-6 text-white leading-tight transition-colors duration-300">
-										Design & Development
+										Design, Development & Testing
 									</h3>
 									<p className="text-gray-400 text-xl leading-relaxed">
-										Our team creates stunning designs and builds robust, scalable solutions.
+										We build scalable, secure solutions with regular updates, testing, and quality checks at every stage.
 									</p>
 								</div>
 							</div>
@@ -186,10 +185,10 @@ const [isDesktop, setIsDesktop] = useState(false);
 								</div>
 								<div className="flex-1 flex flex-col justify-end">
 									<h3 className="text-4xl font-bold mb-6 text-white leading-tight transition-colors duration-300 hover:text-purple-400">
-										Launch & Support
+										Deployment & Ongoing Support
 									</h3>
 									<p className="text-gray-400 text-xl leading-relaxed">
-										We ensure a smooth launch and provide ongoing support to help you succeed.
+										We deploy the solution, ensure a smooth handover, and provide continuous support, upgrades, and maintenance.
 									</p>
 								</div>
 							</div>
@@ -216,12 +215,11 @@ const [isDesktop, setIsDesktop] = useState(false);
 							<span className="text-white text-3xl">.</span>
 						</div>
 						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">
-							Discovery
+							Discovery & Requirements
 							<br />
 						</h3>
 						<p className="text-gray-400 text-md leading-relaxed">
-							We start by understanding your business, goals, and target audience to define the project
-							scope.
+							We understand your business model, users, and workflows to clearly define requirements, scope, and success metrics.
 						</p>
 					</div>
 
@@ -230,9 +228,9 @@ const [isDesktop, setIsDesktop] = useState(false);
 							<span className="text-2xl font-bold text-white">STEP 2</span>
 							<span className="text-white text-3xl">.</span>
 						</div>
-						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Strategy</h3>
+						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Solution Planning</h3>
 						<p className="text-gray-400 text-md leading-relaxed">
-							We develop a comprehensive strategy and roadmap to achieve your business objectives.
+							We design the system architecture, technology stack, and execution roadmap aligned with your business goals.
 						</p>
 					</div>
 
@@ -241,9 +239,9 @@ const [isDesktop, setIsDesktop] = useState(false);
 							<span className="text-2xl font-bold text-white">STEP 3</span>
 							<span className="text-white text-3xl">.</span>
 						</div>
-						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Design & Development</h3>
+						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Design, Development & Testing</h3>
 						<p className="text-gray-400 text-md leading-relaxed">
-							Our team creates stunning designs and builds robust, scalable solutions.
+							We build scalable, secure solutions with regular updates, testing, and quality checks at every stage.
 						</p>
 					</div>
 
@@ -252,9 +250,9 @@ const [isDesktop, setIsDesktop] = useState(false);
 							<span className="text-2xl font-bold text-white">STEP 4</span>
 							<span className="text-white text-3xl">.</span>
 						</div>
-						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Launch & Support</h3>
+						<h3 className="text-4xl font-bold mb-4 text-white leading-tight">Deployment & Ongoing Support</h3>
 						<p className="text-gray-400 text-md leading-relaxed">
-							We ensure a smooth launch and provide ongoing support to help you succeed.
+							We deploy the solution, ensure a smooth handover, and provide continuous support, upgrades, and maintenance.
 						</p>
 					</div>
 				</div>
