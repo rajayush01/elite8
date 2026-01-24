@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+type Particle = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+};
+
+
 export default function ProjectsHeader() {
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
-  const [particles, setParticles] = useState([]);
+const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
     // Generate subtle particles
@@ -18,13 +28,14 @@ export default function ProjectsHeader() {
     setParticles(newParticles);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
-    });
-  };
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  setMousePosition({
+    x: ((e.clientX - rect.left) / rect.width) * 100,
+    y: ((e.clientY - rect.top) / rect.height) * 100,
+  });
+};
+
 
   return (
     <section 

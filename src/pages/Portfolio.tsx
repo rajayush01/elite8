@@ -3,18 +3,16 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img from '@/assets/try.jpg';
 import ProjectsHeader from '@/components/ui/ProjectHeader';
-import vid1 from "@/assets/drvikas.mp4";
-import vid2 from "@/assets/IB.mp4";
-import vid3 from "@/assets/nymara_demo.mp4";
-import vid4 from "@/assets/onesty_demo.mp4";
-import vid5 from "@/assets/temple.mp4";
-
-
+import vid1 from '@/assets/drvikas.mp4';
+import vid2 from '@/assets/IB.mp4';
+import vid3 from '@/assets/nymara_demo.mp4';
+import vid4 from '@/assets/onesty_demo.mp4';
+import vid5 from '@/assets/temple.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HorizontalScrollSnap() {
-	const containerRef = useRef(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [currentText, setCurrentText] = useState('');
 	const [isDeleting, setIsDeleting] = useState(false);
 	const words = ['together.', 'brands.', 'products.', 'designs.', 'ideas.'];
@@ -22,35 +20,37 @@ export default function HorizontalScrollSnap() {
 
 	const projects = [
 		{
-			title: "Creative Vision",
-			description: "Transforming ideas into reality through innovative design solutions that captivate and inspire audiences",
-			imageUrl: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
-			videoUrl: vid1
+			title: 'Creative Vision',
+			description:
+				'Transforming ideas into reality through innovative design solutions that captivate and inspire audiences',
+			imageUrl: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80',
+			videoUrl: vid1,
 		},
 		{
-			title: "Brand Identity",
-			description: "Crafting memorable experiences that resonate with your audience and build lasting connections",
-			imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-			videoUrl: vid2
+			title: 'Brand Identity',
+			description:
+				'Crafting memorable experiences that resonate with your audience and build lasting connections',
+			imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
+			videoUrl: vid2,
 		},
 		{
-			title: "Digital Innovation",
-			description: "Leading the future of design with cutting-edge technology and creative excellence",
-			imageUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-			videoUrl: vid3
+			title: 'Digital Innovation',
+			description: 'Leading the future of design with cutting-edge technology and creative excellence',
+			imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+			videoUrl: vid3,
 		},
 		{
-			title: "Visual Storytelling",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-			videoUrl: vid4
+			title: 'Visual Storytelling',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+			videoUrl: vid4,
 		},
 		{
-			title: "Visual Storytelling",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-			videoUrl: vid5
-		}
+			title: 'Visual Storytelling',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+			videoUrl: vid5,
+		},
 	];
 
 	// Typing effect
@@ -82,8 +82,7 @@ export default function HorizontalScrollSnap() {
 	useEffect(() => {
 		if (!containerRef.current) return;
 
-		const panels = containerRef.current.querySelectorAll('.panel');
-		let scrollTrigger;
+		const panels = containerRef.current.querySelectorAll<HTMLElement>('.panel');
 
 		// Simple scroll-based horizontal movement
 		const handleScroll = () => {
@@ -92,8 +91,8 @@ export default function HorizontalScrollSnap() {
 			const maxScroll = 3500;
 			const percentage = Math.min(scrolled / maxScroll, 1);
 			const translateX = -percentage * 100 * (panels.length - 1);
-			
-			panels.forEach(panel => {
+
+			panels.forEach((panel: HTMLElement) => {
 				panel.style.transform = `translateX(${translateX}%)`;
 			});
 		};
