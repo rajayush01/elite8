@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import vid from '../../assets/hero.mp4';
-
 const HeroSection = () => {
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -9,7 +8,6 @@ const HeroSection = () => {
 
 	// --- Galaxy Canvas Animation ---
 	useEffect(() => {
-		// Trigger initial animation after component mounts
 		const timer = setTimeout(() => {
 			setIsLoaded(true);
 		}, 100);
@@ -85,12 +83,10 @@ const HeroSection = () => {
 			}
 		}
 
-		// Normal particles
 		for (let i = 0; i < particleCount; i++) {
 			particles.push(new Particle(canvas));
 		}
 
-		// Brighter particles
 		for (let i = 0; i < 20; i++) {
 			const p = new Particle(canvas);
 			p.size = Math.random() * 1.5 + 0.8;
@@ -143,27 +139,29 @@ const HeroSection = () => {
 	}, []);
 
 	// --- Animation Values ---
-	const firstTextOpacity = scrollProgress < 0.5 ? Math.max(0, 1 - scrollProgress * 4) : 0.5;
+	const firstTextOpacity = scrollProgress < 0.5 ? Math.max(0, 1 - scrollProgress * 4) : 0;
 	const secondTextProgress = scrollProgress < 0.5 ? 0 : Math.max(0, Math.min((scrollProgress - 0.5) * 2, 1));
 
-	// Text slides up from bottom smoothly - starts very close to bottom
-	const textSlideProgress = scrollProgress < 0.5 ? 0 : Math.min((scrollProgress - 0.5) * 2.5, 1);
-	const textTranslateY = (1 - textSlideProgress) * 200; // Starts at 200px below (closer to bottom)
+	// Card slide effect - starts from bottom
+	const cardTranslateY = scrollProgress < 0.4 ? 100 : Math.max(0, 100 - ((scrollProgress - 0.4) / 0.6) * 100);
+	const cardScale = scrollProgress < 0.4 ? 0.9 : Math.min(1, 0.9 + ((scrollProgress - 0.4) / 0.6) * 0.1);
+	const cardOpacity = scrollProgress < 0.35 ? 0 : Math.min(1, (scrollProgress - 0.35) / 0.15);
 
-	// Video fades out near the end of the scroll
-	const videoOpacity = scrollProgress < 0.8 ? 1 : Math.max(0, 1 - (scrollProgress - 0.8) / 0.2);
+	// Video fades out as card comes in
+	const videoOpacity = scrollProgress < 0.4 ? 1 : Math.max(0, 1 - (scrollProgress - 0.4) / 0.3);
 
-	// --- Text Reveal Logic - Character by Character with Opacity (Very Slow) ---
-	const text = 'We craft scalable websites, applications, and platforms—engineered for performance and built to help businesses grow.';
+	// --- Text Reveal Logic ---
+	const text =
+		'We craft scalable websites, applications, and platforms—engineered for performance and built to help businesses grow.';
 	const words = text.split(' ');
 
 	const getCharOpacity = (wordIndex: number, charIndexInWord: number): number => {
 		const allChars: string[] = [];
-		words.forEach(word => {
-			word.split('').forEach(char => allChars.push(char));
+		words.forEach((word) => {
+			word.split('').forEach((char) => allChars.push(char));
 			allChars.push(' ');
 		});
-		
+
 		let currentCharIndex = 0;
 		for (let i = 0; i < wordIndex; i++) {
 			currentCharIndex += words[i].length + 1;
@@ -182,37 +180,32 @@ const HeroSection = () => {
 		}
 	};
 
-
-
-
-
-
-	// const handleScrollDown = () => {
-	// 	window.scrollTo({
-	// 		top: window.innerHeight * 1.1,
-	// 		behavior: 'smooth'
-	// 	});
-	// };
-
 	return (
 		<div ref={sectionRef} className="relative w-full" style={{ height: '300vh' }}>
 			{/* Video Background Layer */}
 			<div
-				className="fixed inset-0 z-0 transition-opacity duration-300"
+				className="fixed inset-0 z-0 transition-opacity duration-500"
 				style={{
 					opacity: videoOpacity,
 					pointerEvents: videoOpacity === 0 ? 'none' : 'auto',
 				}}
 			>
-				<video autoPlay loop muted playsInline className="w-full h-full object-cover">
+				<video
+					autoPlay
+					loop
+					muted
+					playsInline
+					className="w-full h-full object-cover"
+				>
 					<source src={vid} type="video/mp4" />
 				</video>
+				<div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-black"></div>
 				<div className="absolute inset-0 bg-black/50"></div>
 			</div>
 
 			{/* Galaxy Canvas Layer */}
 			<div
-				className="fixed inset-0 z-[5] pointer-events-none transition-opacity duration-300"
+				className="fixed inset-0 z-[5] pointer-events-none transition-opacity duration-500"
 				style={{ opacity: videoOpacity }}
 			>
 				<canvas id="galaxyCanvas" className="w-full h-full opacity-40 bg-[#151d58]"></canvas>
@@ -220,7 +213,7 @@ const HeroSection = () => {
 
 			{/* Section 1: Imagination to Innovation */}
 			<div
-				className="sticky top-0 h-screen flex flex-col px-6 md:px-20 z-10"
+				className="sticky top-0 h-screen flex flex-col px-6 md:px-20 z-10 mt-12 md:mt-0"
 				style={{
 					opacity: firstTextOpacity,
 					transform: `translateX(${isLoaded ? 0 : -100}px) translateY(-${scrollProgress * 50}px)`,
@@ -273,7 +266,7 @@ const HeroSection = () => {
 
 				{/* CTA Bottom Bar */}
 				<div
-					className="mb-28 md:mb-16"
+					className="mb-28 md:mb-16 "
 					style={{
 						opacity: isLoaded ? 1 : 0,
 						transform: `translateY(${isLoaded ? 0 : 20}px)`,
@@ -303,86 +296,56 @@ const HeroSection = () => {
 						</button>
 					</div>
 				</div>
-
-				{/* Scroll Down Button */}
-				<div
-					className="absolute bottom-2 sm:bottom-36 left-1/2 transform -translate-x-1/2 z-20"
-					style={{
-						opacity: isLoaded ? 1 : 0,
-						transform: `translateX(-50%) translateY(${isLoaded ? 0 : 20}px)`,
-						transition:
-							'opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s',
-					}}
-				>
-					{/* <button
-						onClick={handleScrollDown}
-						className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group"
-					>
-						<div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2 group-hover:border-white transition-colors duration-300">
-							<div className="w-1.5 h-1.5 bg-white/70 rounded-full animate-bounce group-hover:bg-white"></div>
-						</div>
-						<svg
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							className="group-hover:translate-y-1 transition-transform duration-300"
-						>
-							<path
-								d="M12 5V19M12 19L5 12M12 19L19 12"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-						</svg>
-					</button> */}
-				</div>
 			</div>
 
-			{/* Section 2: Character-by-character reveal with slide-up animation */}
+			{/* Section 2: Card-like scroll over effect */}
 			<div
 				ref={textRef}
-				className="sticky top-0 min-h-screen flex items-center justify-center px-6 md:px-20 z-20 bg-black"
+				className="sticky top-0 h-screen flex items-center justify-center px-0 md:px-8 z-20"
 				style={{
-					opacity: scrollProgress >= 0.5 ? 1 : 0,
-					transition: 'opacity 0.3s ease',
+					opacity: cardOpacity,
+					pointerEvents: cardOpacity === 0 ? 'none' : 'auto',
 				}}
 			>
 				<div
-					className="max-w-7xl w-full sm:mt-0 mt-28 flex flex-col md:flex-row items-center justify-between gap-12"
+					className="w-full max-w-7xl bg-black rounded-3xl shadow-2xl overflow-hidden"
 					style={{
-						transform: `translateY(${textTranslateY}px)`,
-						transition: 'transform 0.3s ease-out',
+						transform: `translateY(${cardTranslateY}%) scale(${cardScale})`,
+						transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+						boxShadow: '0 50px 100px -20px rgba(0, 0, 0, 0.8), 0 30px 60px -30px rgba(139, 92, 246, 0.3)',
 					}}
 				>
-					<div className="flex sm:flex-row flex-col sm:gap-10">
-						<div className="mb-6">
-							<span className="text-gray-400 text-sm md:text-base uppercase tracking-wider">(ABOUT)</span>
-						</div>
-						<p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-							{words.map((word, wordIndex) => (
-								<span key={wordIndex} className="inline-block mr-3 mb-2">
-									{word.split('').map((char, charIndex) => {
-										const opacity = getCharOpacity(wordIndex, charIndex);
-										const isHighlighted = opacity === 1;
-										return (
-											<span
-												key={charIndex}
-												style={{
-													color: isHighlighted ? 'white' : '#4a4a4a',
-													opacity: opacity,
-													display: 'inline-block',
-													transition: 'color 0.8s ease, opacity 0.8s ease', // Slow transition
-												}}
-											>
-												{char}
-											</span>
-										);
-									})}
+					<div className="px-6 py-12 md:px-16 md:py-20">
+						<div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
+							<div className="flex-shrink-0">
+								<span className="text-gray-400 text-sm md:text-base uppercase tracking-wider">
+									(ABOUT)
 								</span>
-							))}
-						</p>
+							</div>
+							<p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+								{words.map((word, wordIndex) => (
+									<span key={wordIndex} className="inline-block mr-3 mb-2">
+										{word.split('').map((char, charIndex) => {
+											const opacity = getCharOpacity(wordIndex, charIndex);
+											const isHighlighted = opacity === 1;
+											return (
+												<span
+													key={charIndex}
+													style={{
+														color: isHighlighted ? 'white' : '#4a4a4a',
+														opacity: opacity,
+														display: 'inline-block',
+														transition: 'color 0.8s ease, opacity 0.8s ease',
+													}}
+												>
+													{char}
+												</span>
+											);
+										})}
+									</span>
+								))}
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

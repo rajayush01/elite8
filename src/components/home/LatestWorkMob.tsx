@@ -5,10 +5,9 @@ import vid2 from '../../assets/drvikas.mp4';
 import vid3 from '../../assets/IB.mp4';
 import { useState, useEffect, useRef } from 'react';
 
-export default function ScrollVideoShowcase() {
+export default function LetsWorkMob() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const containerRef = useRef<HTMLDivElement | null>(null);
-
 	const scrollTimeout = useRef<number | null>(null);
 
 	const isTransitioning = useRef(false);
@@ -42,6 +41,9 @@ export default function ScrollVideoShowcase() {
 
 	useEffect(() => {
   const handleWheel = (e: WheelEvent) => {
+    // Desktop only
+    if (window.innerWidth < 1024) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -114,12 +116,85 @@ export default function ScrollVideoShowcase() {
 
 	return (
 		<div className="bg-black">
-			{/* Content above showcase */}
+			{/* Mobile Version - Normal Scroll */}
+			<div className="lg:hidden">
+				{allProjects.map((project, index) => (
+					<div key={project.id} className="max-h-screen w-full bg-black flex flex-col">
+						{/* Video Section */}
+						<div className="w-full h-[50vh] flex items-center justify-center p-4 sm:p-6">
+							<video
+								src={project.video}
+								autoPlay
+								loop
+								muted
+								playsInline
+								className="w-full h-full max-w-[550px] max-h-[550px] mx-auto object-contain rounded-xl"
+							/>
+						</div>
 
-			{/* Scroll Video Showcase */}
-			<div ref={containerRef} className="h-screen w-full overflow-hidden bg-black flex sticky top-0">
-				{/* Left Content Section */}
-				<div className="w-1/2 h-full flex items-center justify-center px-16 relative">
+						{/* Content Section */}
+						<div className="w-full h-[28vh] flex items-center justify-center px-4 sm:px-8 mb-8">
+							<div className="max-w-xl w-full">
+								<div className="text-gray-500 text-4xl sm:text-sm font-mono mb-2 sm:mb-4">
+									{project.number}
+								</div>
+								<h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4">
+									{project.title}
+								</h1>
+								<p className="text-gray-400 text-base sm:text-lg md:text-xl mb-4 sm:mb-6">
+									{project.subtitle}
+								</p>
+								<div className="flex flex-wrap gap-2 sm:gap-3">
+									{project.names.map((name, i) => (
+										<span
+											key={i}
+											className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm ${
+												name === project.title
+													? 'bg-white text-black'
+													: 'bg-gray-800 text-gray-400'
+											}`}
+										>
+											{name}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			{/* Desktop Version - Scroll Hijacking */}
+			<div
+				ref={containerRef}
+				className="hidden lg:flex min-h-screen w-full overflow-hidden bg-black sticky top-0"
+			>
+				{/* Video Section - Right on desktop */}
+				<div className="w-1/2 h-full flex items-center justify-center p-8 relative order-2">
+					{allProjects.map((project, index) => (
+						<div
+							key={project.id}
+							className="absolute inset-8 transition-all duration-1000 ease-out"
+							style={{
+								opacity: activeIndex === index ? 1 : 0,
+								transform: activeIndex === index ? 'scale(1)' : 'scale(0.95)',
+								pointerEvents: activeIndex === index ? 'auto' : 'none',
+							}}
+						>
+							<video
+								src={project.video}
+								autoPlay
+								loop
+								muted
+								playsInline
+								className="w-full h-full max-w-[550px] max-h-[550px] mx-auto object-contain rounded-2xl"
+							/>
+						</div>
+					))}
+				</div>
+
+				{/* Content Section - Left on desktop */}
+				<div className="w-1/2 h-full flex items-center justify-center px-16 relative order-1">
 					{allProjects.map((project, index) => (
 						<div
 							key={project.id}
@@ -129,11 +204,11 @@ export default function ScrollVideoShowcase() {
 								pointerEvents: activeIndex === index ? 'auto' : 'none',
 							}}
 						>
-							<div className="max-w-xl">
-								<div className="text-gray-500 text-7xl font-mono mb-4">{project.number}</div>
-								<h1 className="text-white text-5xl font-bold mb-6">{project.title}</h1>
+							<div className="max-w-xl w-full">
+								<div className="text-gray-500 text-sm font-mono mb-4">{project.number}</div>
+								<h1 className="text-white text-7xl font-bold mb-6">{project.title}</h1>
 								<p className="text-gray-400 text-xl mb-8">{project.subtitle}</p>
-								<div className="flex gap-4">
+								<div className="flex flex-wrap gap-4">
 									{project.names.map((name, i) => (
 										<span
 											key={i}
@@ -152,27 +227,15 @@ export default function ScrollVideoShowcase() {
 					))}
 				</div>
 
-				{/* Right Video Section */}
-				<div className="w-1/2 h-full flex items-center justify-center p-8 relative">
-					{allProjects.map((project, index) => (
+				{/* Scroll Indicator - Desktop only */}
+				<div className="fixed bottom-8 right-8 flex flex-col gap-2 z-10">
+					{allProjects.map((_, index) => (
 						<div
-							key={project.id}
-							className="absolute inset-8 transition-all duration-1000 ease-out flex flex-col justify-center items-center"
-							style={{
-								opacity: activeIndex === index ? 1 : 0,
-								transform: activeIndex === index ? 'scale(1)' : 'scale(0.95)',
-								pointerEvents: activeIndex === index ? 'auto' : 'none',
-							}}
-						>
-							<video
-								src={project.video}
-								autoPlay
-								loop
-								muted
-								playsInline
-								className="w-[650px] h-[650px] object-contain rounded-2xl"
-							/>
-						</div>
+							key={index}
+							className={`w-2 h-2 rounded-full transition-all duration-300 ${
+								activeIndex === index ? 'bg-white h-8' : 'bg-gray-600'
+							}`}
+						/>
 					))}
 				</div>
 			</div>

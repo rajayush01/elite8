@@ -80,7 +80,7 @@ export default function MobileVerticalScroll() {
 	return (
 		<div className="bg-black text-white overflow-x-hidden">
 			{/* Hero Section */}
-			<section className="min-h-screen flex flex-col justify-center items-center px-6 py-20">
+			<section className="max-h-screen flex flex-col justify-center items-center px-6 py-12 mt-28">
 				<div className="max-w-lg text-center">
 					<h1 className="text-4xl sm:text-5xl mb-6">
 						<span className="font-serif block mb-2">Let's create</span>
@@ -115,7 +115,7 @@ export default function MobileVerticalScroll() {
 			</section>
 
 			{/* Projects Header Section */}
-			<section className="min-h-screen flex flex-col justify-center items-center px-6 py-20">
+			<section className="max-h-screen flex flex-col justify-center items-center px-6 py-20">
 				<div className="max-w-lg">
 					<ProjectsHeader/>
 				</div>
@@ -123,10 +123,10 @@ export default function MobileVerticalScroll() {
 
 			{/* Project Sections */}
 			{projects.map((project, index) => (
-				<section key={index} className="min-h-screen flex flex-col justify-center items-center px-6 py-20">
+				<section key={index} className="max-h-screen flex flex-col justify-center items-center px-6 py-12">
 					<div className="max-w-lg w-full">
 						{/* Animated Header */}
-						<div className="mb-8 text-center">
+						<div className="mb-4 text-center">
 							<h2 className="text-3xl sm:text-5xl font-bold font-serif mb-4 relative inline-block">
 								<span
 									className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
@@ -140,12 +140,12 @@ export default function MobileVerticalScroll() {
 								</span>
 								<span
 									className="relative"
-									style={{
-										background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
-										WebkitBackgroundClip: 'text',
-										WebkitTextFillColor: 'transparent',
-										backgroundClip: 'text',
-									}}
+									// style={{
+									// 	background: 'linear-gradient(90deg, #c82736, #e77614, #8d3dae)',
+									// 	WebkitBackgroundClip: 'text',
+									// 	WebkitTextFillColor: 'transparent',
+									// 	backgroundClip: 'text',
+									// }}
 								>
 									{project.title}
 								</span>
@@ -153,9 +153,9 @@ export default function MobileVerticalScroll() {
 						</div>
 
 						{/* Project Showcase */}
-						<div className="space-y-6">
+						<div className="space-y-3">
 							{/* Project Image */}
-							<div className="relative group cursor-pointer">
+							{/* <div className="relative group cursor-pointer">
 								<div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse"></div>
 								<div className="relative overflow-hidden rounded-2xl border-2 border-white/10 group-hover:border-white/30 transition-all duration-500 transform group-hover:scale-105">
 									<img
@@ -170,7 +170,7 @@ export default function MobileVerticalScroll() {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
 
 							{/* Project Video */}
 							<div className="relative group cursor-pointer">
@@ -188,19 +188,19 @@ export default function MobileVerticalScroll() {
 											type="video/mp4"
 										/>
 									</video>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+									{/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
 										<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
 											<h3 className="text-2xl font-bold mb-2">Digital Experience</h3>
 											<p className="text-gray-300">Interactive web platform</p>
 										</div>
-									</div>
+									</div> */}
 								</div>
 							</div>
 						</div>
 
 						{/* Project Info */}
 						<div className="mt-8 text-center space-y-2">
-							<h3 className="text-2xl font-bold">{project.title}</h3>
+							{/* <h3 className="text-2xl font-bold">{project.title}</h3> */}
 							<p className="text-gray-400">{project.description}</p>
 						</div>
 					</div>
@@ -208,7 +208,7 @@ export default function MobileVerticalScroll() {
 			))}
 
 			{/* Footer */}
-			<section className="min-h-screen flex flex-col justify-center items-center px-6 py-20">
+			<section className="max-h-screen flex flex-col justify-center items-center px-6 py-20">
 				<div className="max-w-lg text-center">
 					<h2 className="text-4xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
 						Let's Connect
