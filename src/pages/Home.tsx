@@ -11,6 +11,7 @@ import UsVsOthers from '@/components/home/UsVsOthers'
 import LetsWork from '@/components/home/LatestWork'
 import LetsWorkMob from '@/components/home/LatestWorkMob'
 import HeroSectionMobi from '@/components/home/HerosectionMobi'
+import SecondSectionMobWrapper from '@/components/home/SecondSectionMobWrapper'
 
 const Home = () => {
   return (
@@ -21,6 +22,9 @@ const Home = () => {
       </div>
       <div className="hidden md:block">
       <HeroSection />
+      </div>
+      <div className="md:hidden">
+        <SecondSectionMobWrapper />
       </div>
       <div className='flex flex-row justify-center items-center text-center mb-8 sm:mb-0 text-purple-800 font-serif text-5xl font-bold mt-20 md:mt-0'>LATEST WORK</div>
       <div className="md:hidden">
