@@ -119,23 +119,7 @@ const FAQSection = () => {
                 alt="Team collaboration"
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute bottom-6 right-6">
-                <div className="relative">
-                  <svg className="w-24 h-24 animate-spin-slow" viewBox="0 0 100 100">
-                    <defs>
-                      <path
-                        id="circle"
-                        d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                      />
-                    </defs>
-                    <text className="text-[10px] fill-white uppercase tracking-wider">
-                      <textPath href="#circle">
-                        Elite8 Digital • Innovation • Excellence • Elite8 Digital • 
-                      </textPath>
-                    </text>
-                  </svg>
-                </div>
-              </div>
+              
             </div>
 
             {/* Call to Action */}
@@ -167,19 +151,6 @@ const FAQSection = () => {
         </div>
       </div>
 
-      <style>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };

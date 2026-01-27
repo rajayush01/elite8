@@ -11,13 +11,14 @@ export default function LetsWorkMob() {
 	const scrollTimeout = useRef<number | null>(null);
 
 	const isTransitioning = useRef(false);
-
+const handleNavigate = () => {
+		window.location.href = '/portfolio';
+	};
 	const allProjects = [
 		{
 			id: 1,
 			number: '01.',
 			title: 'Nymara',
-			names: ['Nymara', 'Standford', 'IB Tech'],
 			subtitle: 'Personal Portfolio Website for talented design engineer',
 			video: vid1,
 		},
@@ -25,7 +26,6 @@ export default function LetsWorkMob() {
 			id: 2,
 			number: '02.',
 			title: 'Standford',
-			names: ['Nymara', 'Standford', 'IB Tech'],
 			subtitle: 'Website and branding for AI Automation Company',
 			video: vid2,
 		},
@@ -33,7 +33,6 @@ export default function LetsWorkMob() {
 			id: 3,
 			number: '03.',
 			title: 'IB Tech',
-			names: ['Nymara', 'Standford', 'IB Tech'],
 			subtitle: 'Website and branding for all kind of Design Agency',
 			video: vid3,
 		},
@@ -144,20 +143,7 @@ export default function LetsWorkMob() {
 								<p className="text-gray-400 text-base sm:text-lg md:text-xl mb-4 sm:mb-6">
 									{project.subtitle}
 								</p>
-								<div className="flex flex-wrap gap-2 sm:gap-3">
-									{project.names.map((name, i) => (
-										<span
-											key={i}
-											className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm ${
-												name === project.title
-													? 'bg-white text-black'
-													: 'bg-gray-800 text-gray-400'
-											}`}
-										>
-											{name}
-										</span>
-									))}
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -193,52 +179,19 @@ export default function LetsWorkMob() {
 					))}
 				</div>
 
-				{/* Content Section - Left on desktop */}
-				<div className="w-1/2 h-full flex items-center justify-center px-16 relative order-1">
-					{allProjects.map((project, index) => (
-						<div
-							key={project.id}
-							className="absolute inset-0 flex items-center justify-center px-16 transition-opacity duration-700 ease-in-out"
-							style={{
-								opacity: activeIndex === index ? 1 : 0,
-								pointerEvents: activeIndex === index ? 'auto' : 'none',
-							}}
-						>
-							<div className="max-w-xl w-full">
-								<div className="text-gray-500 text-sm font-mono mb-4">{project.number}</div>
-								<h1 className="text-white text-7xl font-bold mb-6">{project.title}</h1>
-								<p className="text-gray-400 text-xl mb-8">{project.subtitle}</p>
-								<div className="flex flex-wrap gap-4">
-									{project.names.map((name, i) => (
-										<span
-											key={i}
-											className={`px-4 py-2 rounded-full text-sm ${
-												name === project.title
-													? 'bg-white text-black'
-													: 'bg-gray-800 text-gray-400'
-											}`}
-										>
-											{name}
-										</span>
-									))}
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-
-				{/* Scroll Indicator - Desktop only */}
-				<div className="fixed bottom-8 right-8 flex flex-col gap-2 z-10">
-					{allProjects.map((_, index) => (
-						<div
-							key={index}
-							className={`w-2 h-2 rounded-full transition-all duration-300 ${
-								activeIndex === index ? 'bg-white h-8' : 'bg-gray-600'
-							}`}
-						/>
-					))}
-				</div>
 			</div>
+			{/* More Projects Button */}
+					<div className="flex justify-center mt-8 md:mt-12">
+						<button
+							onClick={handleNavigate}
+							className="px-6 md:px-10 py-3 md:py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all duration-300 relative overflow-hidden group text-sm md:text-base"
+						>
+							<span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+								More Projects
+							</span>
+							<span className="absolute inset-0 bg-purple-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+						</button>
+					</div>
 		</div>
 	);
 }

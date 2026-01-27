@@ -27,6 +27,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 html {
@@ -36,7 +37,7 @@ html {
 body {
   font-family: 'Poppins', 'Roboto', sans-serif;
   color: var(--text-primary);
-  background-color: var(--background);
+  background-color: black;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

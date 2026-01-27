@@ -112,45 +112,27 @@ const Footer = () => {
 								to="/contact"
 								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
 							>
-								Contact Us
+								Let's Talk
 							</Link>
-							<Link
+							{/* <Link
 								to="/careers"
 								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
 							>
 								Careers
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 
 					{/* Services Column */}
 					<div className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 border-b md:border-b-0 md:border-r border-gray-800">
 						<h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Services</h3>
-						<div className="space-y-2 sm:space-y-3">
-							<Link
-								to="/services/web-development"
-								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
-							>
-								Web Development
-							</Link>
-							<Link
-								to="/services/ui-ux-design"
-								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
-							>
-								UI/UX Design
-							</Link>
-							<Link
-								to="/services/branding"
-								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
-							>
-								Branding
-							</Link>
-							<Link
-								to="/services/digital-marketing"
-								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
-							>
-								Digital Marketing
-							</Link>
+						<div className="space-y-2 sm:space-y-3 text-gray-400">
+							<div>ERP Solutions</div>
+							<div>Custom Website Design, Development & Maintenance</div>
+							<div>E-Commerce Solutions</div>
+							<div>Mobile Application Development</div>
+							<div>Business Web Applications & Dashboards</div>
+							<div>Custom Software Development</div>
 						</div>
 					</div>
 

@@ -86,7 +86,9 @@ const ContactSection = () => {
 							<ul className="space-y-0.5 text-xs sm:text-sm">
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Scalable websites, web apps, and mobile applications</span>
+									<span className="leading-relaxed">
+										Scalable websites, web apps, and mobile applications
+									</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
@@ -94,15 +96,21 @@ const ContactSection = () => {
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">AI-assisted tools and intelligent automation</span>
+									<span className="leading-relaxed">
+										AI-assisted tools and intelligent automation
+									</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Real-time monitoring, analytics, and optimization</span>
+									<span className="leading-relaxed">
+										Real-time monitoring, analytics, and optimization
+									</span>
 								</li>
 								<li className="flex items-start text-gray-400">
 									<span className="mr-3 mt-2 w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></span>
-									<span className="leading-relaxed">Secure, global-ready systems with dedicated support</span>
+									<span className="leading-relaxed">
+										Secure, global-ready systems with dedicated support
+									</span>
 								</li>
 							</ul>
 						</div>
@@ -115,9 +123,23 @@ const ContactSection = () => {
 									<Monitor size={20} className="text-gray-400 sm:w-[22px] sm:h-[22px]" />
 									<h3 className="text-lg sm:text-xl font-normal text-white">Digital</h3>
 								</div>
-								<button className="text-gray-400 hover:text-[#ff6b4a] transition-colors text-left text-sm sm:text-base break-all">
-									contact@elite8digital.in
-								</button>
+								<div className='flex flex-col gap-3'>
+									<button className="text-gray-400 hover:text-[#ff6b4a] transition-colors text-left text-sm sm:text-base break-all">
+										contact@elite8digital.in
+									</button>
+									<a
+										href="tel:+916260894977"
+										className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
+									>
+										+91 6260894977
+									</a>
+									<a
+										href="tel:+917303125674"
+										className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
+									>
+										+91 7303125674
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
