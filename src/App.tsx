@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import MainLayout from './components/layout/MainLayout';
-import Portfolio from './pages/Portfolio';
+//import Portfolio from './pages/Portfolio';
 import AboutPage from './pages/About';
 import ContactSection from './pages/LetsTalk';
 import 'remixicon/fonts/remixicon.css';

@@ -10,6 +10,7 @@ import HowWeWork from '@/components/home/HowWeWork'
 import UsVsOthers from '@/components/home/UsVsOthers'
 import LetsWork from '@/components/home/LatestWork'
 import LetsWorkMob from '@/components/home/LatestWorkMob'
+
 const Home = () => {
   return (
     <div className="bg-black min-h-screen">

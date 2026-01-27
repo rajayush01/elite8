@@ -1,7 +1,7 @@
 // videos ke saath
 
 import vid1 from '../../assets/nymara_demo.mp4';
-import vid2 from '../../assets/stanford.webm';
+import vid2 from '../../assets/standford.mp4';
 import vid3 from '../../assets/IB.mp4';
 import { useState, useEffect, useRef } from 'react';
 
