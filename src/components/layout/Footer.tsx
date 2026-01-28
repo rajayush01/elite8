@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from '../../assets/elite8digital-nav-cropped.png';
 import vid from '../../assets/hero.mp4';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
+	const navigate = useNavigate();
+
 	const socialLinks = [
 		{
 			name: 'linkedin',
@@ -22,6 +24,29 @@ const Footer = () => {
 			icon: 'ri-facebook-fill'
 		}
 	];
+
+	// Service links with their corresponding IDs from Services component
+	const services = [
+		{ name: 'ERP Solutions', id: 'erp-solutions' },
+		{ name: 'Custom Website Design, Development & Maintenance', id: 'website-design' },
+		{ name: 'E-Commerce Solutions', id: 'ecommerce-solutions' },
+		{ name: 'Mobile Application Development', id: 'mobile-development' },
+		{ name: 'Business Web Applications & Dashboards', id: 'business-applications' },
+		{ name: 'Custom Software Development', id: 'custom-software' }
+	];
+
+	const handleServiceClick = (serviceId: string) => {
+		// Navigate to the services page (adjust the path if needed)
+		navigate('/services');
+		
+		// Wait for navigation to complete, then scroll to the specific service
+		setTimeout(() => {
+			const element = document.getElementById(serviceId);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		}, 100);
+	};
 
 	return (
 		<div className="min-h-screen bg-black text-white mx-4 sm:mx-8 md:mx-12 lg:mx-20 xl:mx-40 my-8 sm:my-12 md:my-16 lg:my-24 border border-gray-800">
@@ -114,12 +139,6 @@ const Footer = () => {
 							>
 								Let's Talk
 							</Link>
-							{/* <Link
-								to="/careers"
-								className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
-							>
-								Careers
-							</Link> */}
 						</div>
 					</div>
 
@@ -127,12 +146,15 @@ const Footer = () => {
 					<div className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 border-b md:border-b-0 md:border-r border-gray-800">
 						<h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Services</h3>
 						<div className="space-y-2 sm:space-y-3 text-gray-400">
-							<div>ERP Solutions</div>
-							<div>Custom Website Design, Development & Maintenance</div>
-							<div>E-Commerce Solutions</div>
-							<div>Mobile Application Development</div>
-							<div>Business Web Applications & Dashboards</div>
-							<div>Custom Software Development</div>
+							{services.map((service) => (
+								<div
+									key={service.id}
+									onClick={() => handleServiceClick(service.id)}
+									className="cursor-pointer hover:text-white transition-colors text-sm sm:text-base"
+								>
+									{service.name}
+								</div>
+							))}
 						</div>
 					</div>
 

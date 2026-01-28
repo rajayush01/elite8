@@ -7,6 +7,7 @@ import ContactSection from './pages/LetsTalk';
 import 'remixicon/fonts/remixicon.css';
 import ScrollToTop from './components/layout/ScrollToTop';
 import PortfolioWrapper from './pages/PortfolioWrapper';
+import Services from './components/home/Services';
 
 // 🧭 Lazy-loaded pages
 const Home = lazy(() => import('./pages/Home'));
@@ -39,6 +40,7 @@ function App() {
 					<Route path="portfolio" element={<PortfolioWrapper />} />
 					<Route path="contact" element={<ContactSection />} />
 					<Route path="about" element={<AboutPage />} />
+					<Route path="services" element={<Services />} />
 
 
 					{/* 🚫 Catch-all for invalid routes */}
