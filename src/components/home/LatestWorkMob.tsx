@@ -134,7 +134,7 @@ const handleNavigate = () => {
 						{/* Content Section */}
 						<div className="w-full h-[5vh] flex items-center justify-center px-4 sm:px-8 mb-8">
 							<div className="max-w-xl w-full">
-								<div className="text-gray-500 text-4xl sm:text-sm font-mono mb-2 pt-4 sm:mb-4">
+								<div className="text-gray-500 text-4xl sm:text-sm font-mono mb-2 sm:mb-4">
 									{project.number}
 								</div>
 								<h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4">
