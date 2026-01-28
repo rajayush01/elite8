@@ -26,7 +26,7 @@ const Home = () => {
       <div className="md:hidden">
         <SecondSectionMobWrapper />
       </div>
-      <div className='flex flex-row justify-center items-center text-center mb-8 sm:mb-0 text-purple-800 font-serif text-5xl font-bold mt-20 md:mt-0'>LATEST WORK</div>
+      <div className='flex flex-row justify-center items-center text-center mb-8 sm:mb-0 text-white font-serif text-5xl font-bold mt-20 md:mt-0'>LATEST WORK</div>
       <div className="md:hidden">
         <LetsWorkMob />
       </div>

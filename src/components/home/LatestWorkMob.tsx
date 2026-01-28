@@ -134,7 +134,7 @@ const handleNavigate = () => {
 						{/* Content Section */}
 						<div className="w-full h-[5vh] flex items-center justify-center px-4 sm:px-8 mb-8">
 							<div className="max-w-xl w-full">
-								<div className="text-gray-500 text-4xl sm:text-sm font-mono mb-2 sm:mb-4">
+								<div className="text-gray-500 text-4xl sm:text-sm font-mono mb-2 pt-4 sm:mb-4">
 									{project.number}
 								</div>
 								<h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4">
@@ -181,7 +181,7 @@ const handleNavigate = () => {
 
 			</div>
 			{/* More Projects Button */}
-					<div className="flex justify-center mt-8 md:mt-12">
+					<div className="flex justify-center mt-16 md:mt-12">
 						<button
 							onClick={handleNavigate}
 							className="px-6 md:px-10 py-3 md:py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all duration-300 relative overflow-hidden group text-sm md:text-base"

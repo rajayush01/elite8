@@ -58,7 +58,7 @@ const Clients = () => {
   
   return (
     <div className="relative overflow-hidden max-w-4xl mx-auto rounded-lg shadow-lg shadow-black mb-5 py-8">
-      <motion.div className="text-center text-white text-2xl font-light mb-10 relative z-10 font-serif ">
+      <motion.div className="text-center text-white text-3xl sm:text-6xl font-light mb-10 relative z-10 font-serif ">
         Built on <span className='text-purple-500'>trust</span><br/> Delivered with <span className='text-purple-500'>excellence</span>
       </motion.div>
       
