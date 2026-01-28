@@ -2,12 +2,12 @@ import vid1 from '../../assets/nymara_demo.mp4';
 import vid2 from '../../assets/standford.mp4';
 import vid3 from '../../assets/IB.mp4';
 import { useState, useEffect, useRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 export default function ScrollVideoShowcase() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
 	const autoScrollInterval = useRef<number | null>(null);
-
+ const navigate = useNavigate();
 	const allProjects = [
 		{
 			id: 1,
@@ -48,7 +48,7 @@ export default function ScrollVideoShowcase() {
 	}, [isPaused, allProjects.length]);
 
 	const handleNavigate = () => {
-		window.location.href = '/portfolio';
+		navigate('/portfolio');
 	};
 
 	const goToSlide = (index: number) => {

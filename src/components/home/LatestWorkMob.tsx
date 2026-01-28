@@ -4,15 +4,15 @@ import vid1 from '../../assets/nymara_demo.mp4';
 import vid2 from '../../assets/standford.mp4';
 import vid3 from '../../assets/IB.mp4';
 import { useState, useEffect, useRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 export default function LetsWorkMob() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const scrollTimeout = useRef<number | null>(null);
-
+	const navigate = useNavigate();
 	const isTransitioning = useRef(false);
-const handleNavigate = () => {
-		window.location.href = '/portfolio';
+		const handleNavigate = () => {
+		navigate('/portfolio');
 	};
 	const allProjects = [
 		{
