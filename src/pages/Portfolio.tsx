@@ -55,6 +55,18 @@ export default function HorizontalScrollSnap() {
 			// imageUrl: img5,
 			videoUrl: vid5,
 		},
+		{
+			title: 'School ERP',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img5,
+			videoUrl: vid2,
+		},
+		{
+			title: 'College ERP',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img5,
+			videoUrl: vid1,
+		},
 	];
 
 	// Typing effect

@@ -11,6 +11,7 @@ interface Service {
   description: string;
   tags: string[];
   image: string;
+  id: string;
 }
 
 
@@ -26,7 +27,8 @@ const services: Service[] = [
     description:
       'End-to-end ERP systems designed for schools, colleges, hospitals, and organizations to manage operations, data, and reporting from a single platform.',
     tags: ['School / College ERP', 'Billing & Invoicing', 'Attendance & Fees', 'Reports & Analytics'],
-    image:ERPpic
+    image:ERPpic,
+       id: 'erp-solutions'
   },
   {
     number: '02',
@@ -34,7 +36,8 @@ const services: Service[] = [
     description:
       'We design and develop high-performance business websites focused on speed, usability, and conversions, with ongoing maintenance for long-term reliability.',
     tags: ['UI/UX Design', 'Custom Development', 'Performance Optimization', 'Ongoing Maintenance'],
-    image:webd
+    image:webd,
+    id: 'website-design' 
   },
   {
     number: '03',
@@ -42,7 +45,8 @@ const services: Service[] = [
     description:
       'Custom e-commerce platforms with seamless payments, inventory control, order management, and scalable backend systems.',
     tags: ['Custom Storefronts', 'Payment Gateway Integration', 'Inventory & Order Management', 'Admin Dashboard'],
-    image:ecommercepic
+    image:ecommercepic,
+       id: 'ecommerce-solutions'
   },
   {
     number: '04',
@@ -50,7 +54,8 @@ const services: Service[] = [
     description:
       'We design and build secure, scalable mobile applications tailored to business workflows, with seamless performance across devices.',
     tags: ['Android & iOS Apps', 'Web Applications', 'Role-based Access', 'API & System Integration'],
-    image:SEO
+    image:SEO,
+    id: 'mobile-development'
   },
   {
     number: '05',
@@ -58,7 +63,8 @@ const services: Service[] = [
     description:
       'We build secure, scalable web applications and admin dashboards to manage operations, users, data, and workflows efficiently.',
     tags: ['Admin Panels', 'Role-based Access', 'API Integration', 'Secure Architecture'],
-    image:business
+    image:business,
+       id: 'business-applications'
   },
   {
     number: '06',
@@ -66,7 +72,8 @@ const services: Service[] = [
     description:
       'Tailor-made software solutions built to automate processes, reduce manual work, and solve specific business problems.',
     tags: ['Automation Tools', 'Internal Systems', 'Custom Portals', 'Scalable Architecture'],
-    image: software
+    image: software,
+     id: 'custom-software'
   }
   // {
   //   number: '07',
