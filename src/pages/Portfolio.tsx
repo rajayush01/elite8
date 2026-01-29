@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import img from '@/assets/try.jpg';
+import img from '@/assets/elite1.png';
 import ProjectsHeader from '@/components/ui/ProjectHeader';
 import vid1 from '@/assets/drvikas.mp4';
 import vid2 from '@/assets/IB.mp4';
 import vid3 from '@/assets/nymara_demo.mp4';
 import vid4 from '@/assets/onesty_demo.mp4';
 import vid5 from '@/assets/temple.mp4';
+import vid6 from '@/assets/standford.mp4';
+// import { link } from 'fs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,11 +26,33 @@ export default function HorizontalScrollSnap() {
 
 	const projects = [
 		{
+			title: 'NYMARA Jewells',
+			description: 'Leading the future of design with cutting-edge technology and creative excellence',
+			// imageUrl: img3,
+			videoUrl: vid3,
+			link: 'https://nymara.netlify.app/',
+		},
+		{
+			title: "BHARAT O'nesty",
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img4,
+			videoUrl: vid4,
+			link: 'https://bharatonesty.com/',
+		},
+		{
+			title: "Standford School",
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img4,
+			videoUrl: vid6,
+			link: 'https://bharatonesty.com/',
+		},
+		{
 			title: 'Dr. Vikas Bhalekar',
 			description:
 				'Transforming ideas into reality through innovative design solutions that captivate and inspire audiences',
 			// imageUrl: img1,
 			videoUrl: vid1,
+			link: 'http://www.drvikasbhalekar.in/',
 		},
 		{
 			title: 'IB Technology',
@@ -36,36 +60,30 @@ export default function HorizontalScrollSnap() {
 				'Crafting memorable experiences that resonate with your audience and build lasting connections',
 			// imageUrl: img2,
 			videoUrl: vid2,
+			link: 'https://ibtechnologiesgroup.com/',
 		},
-		{
-			title: 'NYMARA Jewells',
-			description: 'Leading the future of design with cutting-edge technology and creative excellence',
-			// imageUrl: img3,
-			videoUrl: vid3,
-		},
-		{
-			title: "BHARAT O'nesty",
-			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
-			// imageUrl: img4,
-			videoUrl: vid4,
-		},
+		
+		
 		{
 			title: 'Hanuman Temple',
 			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
 			// imageUrl: img5,
 			videoUrl: vid5,
+			link: 'http://nashvillehanuman.org/',
 		},
 		{
 			title: 'School ERP',
 			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
 			// imageUrl: img5,
 			videoUrl: vid2,
+			link: 'https://drvikasbhalekar.com/',
 		},
 		{
 			title: 'College ERP',
 			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
 			// imageUrl: img5,
 			videoUrl: vid1,
+			link: 'https://drvikasbhalekar.com/',
 		},
 	];
 
@@ -231,12 +249,17 @@ export default function HorizontalScrollSnap() {
 									</div>
 									<h2 className="text-6xl font-bold text-white leading-tight">{project.title}</h2>
 									<p className="text-gray-300 text-lg leading-relaxed">{project.description}</p>
-									<button className="group px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+									<a
+										href={project.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="group inline-block px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+									>
 										View Website
 										<span className="inline-block ml-2 group-hover:translate-x-2 transition-transform">
 											→
 										</span>
-									</button>
+									</a>	
 								</div>
 
 								<div className={`relative ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
@@ -248,7 +271,7 @@ export default function HorizontalScrollSnap() {
 											loop
 											muted
 											playsInline
-											className="w-full h-[400px] xl:h-[500px] object-cover"
+											className="w-full h-full xl:h-full object-contain"
 										/>
 									</div>
 								</div>
@@ -260,37 +283,7 @@ export default function HorizontalScrollSnap() {
 
 			{/* Vertical Scrolling Section */}
 			{showVerticalSection && (
-				<div ref={verticalSectionRef} className="relative bg-black text-white overflow-y-auto">
-					{/* <div className="min-h-screen flex items-center justify-center px-8">
-            <div className="max-w-4xl text-center space-y-8">
-              <h2 className="text-6xl font-bold">Get In Touch</h2>
-              <p className="text-gray-400 text-xl">Let's create something amazing together</p>
-            </div>
-          </div>
-
-          <div className="min-h-screen bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center px-8">
-            <div className="max-w-4xl space-y-8">
-              <h3 className="text-5xl font-bold">Our Services</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {['Branding', 'Web Design', 'Digital Marketing', 'Strategy'].map((service) => (
-                  <div key={service} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <h4 className="text-2xl font-semibold mb-2">{service}</h4>
-                    <p className="text-gray-300">Excellence in every detail</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="min-h-screen bg-gradient-to-br from-blue-900 to-teal-900 flex items-center justify-center px-8">
-            <div className="max-w-4xl text-center space-y-8">
-              <h3 className="text-5xl font-bold">Ready to Start?</h3>
-              <button className="px-12 py-6 bg-white text-black font-bold text-xl rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
-                Contact Us
-              </button>
-            </div>
-          </div> */}
-				</div>
+				<div ref={verticalSectionRef} className="relative bg-black text-white overflow-y-auto"></div>
 			)}
 		</div>
 	);

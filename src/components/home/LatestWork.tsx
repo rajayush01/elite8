@@ -78,7 +78,7 @@ export default function ScrollVideoShowcase() {
 					{/* Main Content */}
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative">
 						{/* Left Content Section */}
-						<div className="w-full lg:w-1/2 relative order-2 lg:order-1">
+						<div className="w-full md:w-1/2 lg:w-1/3 relative order-2 lg:order-1">
 							<div className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center">
 								{allProjects.map((project, index) => (
 									<div
@@ -107,7 +107,7 @@ export default function ScrollVideoShowcase() {
 						</div>
 
 						{/* Right Video Section */}
-						<div className="w-full lg:w-1/2 relative order-1 lg:order-2">
+						<div className="w-full md:w-1/2 lg:w-2/3 relative order-1 lg:order-2">
 							<div className="relative h-[300px] md:h-[400px] lg:h-[600px] flex items-center justify-center">
 								{allProjects.map((project, index) => (
 									<div

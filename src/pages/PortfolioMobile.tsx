@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import img from '@/assets/try.jpg';
+import img from '@/assets/elite1.png';
 import ProjectsHeader from '@/components/ui/ProjectHeader';
 import vid1 from "@/assets/drvikas.mp4";
 import vid2 from "@/assets/IB.mp4";
 import vid3 from "@/assets/nymara_demo.mp4";
 import vid4 from "@/assets/onesty_demo.mp4";
 import vid5 from "@/assets/temple.mp4";
-import img1 from '.././assets/doctor.png'
-import img2 from '.././assets/ib1.png';
-import img3 from '.././assets/nymara1.png';
-import img4 from '.././assets/bharatonesty.png';
-import img5 from '.././assets/temple1.png';
+import vid6 from "@/assets/standford.mp4";
+// import img1 from '.././assets/doctor.png'
+// import img2 from '.././assets/ib1.png';
+// import img3 from '.././assets/nymara1.png';
+// import img4 from '.././assets/bharatonesty.png';
+// import img5 from '.././assets/temple1.png';
 
 export default function MobileVerticalScroll() {
 	const [currentText, setCurrentText] = useState('');
@@ -46,47 +47,65 @@ export default function MobileVerticalScroll() {
 
 	const projects = [
 		{
-			title: "Dr. Vikas Bhalekar",
-			description: "Transforming ideas into reality through innovative design solutions that captivate and inspire audiences",
-			imageUrl: img1,
-			videoUrl: vid1
-		},
-		{
-			title: "IB Technology",
-			description: "Crafting memorable experiences that resonate with your audience and build lasting connections",
-			imageUrl: img2,
-			videoUrl: vid2
-		},
-		{
-			title: "NYMARA Jewells",
-			description: "Leading the future of design with cutting-edge technology and creative excellence",
-			imageUrl: img3,
-			videoUrl: vid3
+			title: 'NYMARA Jewells',
+			description: 'Leading the future of design with cutting-edge technology and creative excellence',
+			// imageUrl: img3,
+			videoUrl: vid3,
+			link: 'https://nymara.netlify.app/',
 		},
 		{
 			title: "BHARAT O'nesty",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: img4,
-			videoUrl: vid4
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img4,
+			videoUrl: vid4,
+			link: 'https://bharatonesty.com/',
 		},
 		{
-			title: "Hanuman Temple",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: img5,
-			videoUrl: vid5
+			title: "Standford School",
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img4,
+			videoUrl: vid6,
+			link: 'https://bharatonesty.com/',
 		},
 		{
-			title: "School ERP",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: img5,
-			videoUrl: vid2
+			title: 'Dr. Vikas Bhalekar',
+			description:
+				'Transforming ideas into reality through innovative design solutions that captivate and inspire audiences',
+			// imageUrl: img1,
+			videoUrl: vid1,
+			link: 'http://www.drvikasbhalekar.in/',
 		},
 		{
-			title: "College ERP",
-			description: "Creating impactful narratives that engage, inspire, and drive meaningful results",
-			imageUrl: img5,
-			videoUrl: vid1
-		}
+			title: 'IB Technology',
+			description:
+				'Crafting memorable experiences that resonate with your audience and build lasting connections',
+			// imageUrl: img2,
+			videoUrl: vid2,
+			link: 'https://ibtechnologiesgroup.com/',
+		},
+		
+		
+		{
+			title: 'Hanuman Temple',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img5,
+			videoUrl: vid5,
+			link: 'http://nashvillehanuman.org/',
+		},
+		{
+			title: 'School ERP',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img5,
+			videoUrl: vid2,
+			link: 'https://drvikasbhalekar.com/',
+		},
+		{
+			title: 'College ERP',
+			description: 'Creating impactful narratives that engage, inspire, and drive meaningful results',
+			// imageUrl: img5,
+			videoUrl: vid1,
+			link: 'https://drvikasbhalekar.com/',
+		},
 	];
 
 	return (

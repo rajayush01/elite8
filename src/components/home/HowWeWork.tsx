@@ -122,7 +122,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 					{/* Right Side - Cards in horizontal row */}
 					<div className="flex items-start ">
 						{/* Step 1 - Discovery Phase */}
-						<div className="step-card w-[25vw] h-[80vh] flex items-center justify-center flex-shrink-0">
+						<div className="step-card w-[25vw] h-[80vh] lg:h-[70vh] flex items-center justify-center flex-shrink-0">
 							<div className="border-2 border-gray-800 py-10 px-5 h-full w-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 1</span>
@@ -140,7 +140,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 						</div>
 
 						{/* Step 2 - Project Kickoff */}
-						<div className="step-card w-[25vw] h-[80vh] flex items-center justify-center flex-shrink-0">
+						<div className="step-card w-[25vw] h-[80vh] lg:h-[70vh] flex items-center justify-center flex-shrink-0">
 							<div className="border-2 border-gray-800 py-10 px-5 h-full w-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 2</span>
@@ -159,7 +159,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 						</div>
 
 						{/* Step 3 - Receive & Refine */}
-						<div className="step-card w-[25vw] h-[80vh] flex items-center justify-center flex-shrink-0">
+						<div className="step-card w-[25vw] h-[80vh] lg:h-[70vh] flex items-center justify-center flex-shrink-0">
 							<div className="border-2 border-gray-800 py-10 px-3 h-full w-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 3</span>
@@ -177,7 +177,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 						</div>
 
 						{/* Step 4 - Continue & Grow */}
-						<div className="step-card w-[25vw] h-[80vh] flex items-center justify-center flex-shrink-0">
+						<div className="step-card w-[25vw] h-[80vh] lg:h-[70vh] flex items-center justify-center flex-shrink-0">
 							<div className="border-2 border-gray-800 py-10 px-5 h-full w-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
 								<div className="mb-6">
 									<span className="text-3xl font-bold text-white">STEP 4</span>
@@ -188,7 +188,7 @@ const [isDesktop, setIsDesktop] = useState(false);
 										Deployment & Ongoing Support
 									</h3>
 									<p className="text-gray-400 text-xl leading-relaxed">
-										We deploy the solution, ensure a smooth handover, and provide continuous support, upgrades, and maintenance.
+										We deploy the solution, ensure a smooth handover, and provide continuous support, and maintenance.
 									</p>
 								</div>
 							</div>

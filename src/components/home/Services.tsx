@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ERPpic from '../../assets/ERP1.png';
 import ecommercepic from '../../assets/ecommerce.png'
 import webd from '../../assets/webd.png'
-import SEO from '../../assets/mobile.png'
+import SEO from '../../assets/software1.png'
 import software from '../../assets/software.png'
 import business from '../../assets/business.png'
 
